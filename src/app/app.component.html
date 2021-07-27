@@ -1,39 +1,28 @@
-<div class=" container">
+<div class="container">
     <h3 class="d-flex justify-content-center">Financial Stocks</h3>
     <h5 class="d-flex justify-content-center">Charts</h5>
     <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+
         <ul class="navbar-nav">
             <li class="nav-item">
-                <button type="button" routerLink="line" class="m-1 btn btn-light btn-outline-warning" data-toggle="button" >Linear</button>
-                
+                <button type="button" routerLink="line"
+                class="m-1 btn btn-light btn-outline-warning" 
+                data-toggle="button">Linear</button>
             </li>
             <li class="nav-item">
-                <button routerLink="candle" class="m-1 btn btn-light btn-outline-warning">Candle</button>
+                <button routerLink="candle" 
+                class="m-1 btn btn-light btn-outline-warning">Candle</button>
             </li>
-
         </ul>
 
         <br>
+
         <ul class="navbar-nav">
-            <li class= "nav-item">
-                <!-- <button class="m-1 btn btn-light btn-outline-primary" (click)="cambiarNombre()" >W</button> -->
-               
-                
-<!--            <button routerLink="week" class="m-1 btn btn-light btn-outline-primary">W</button>
-                <button routerLink="week" class="m-1 btn btn-light btn-outline-primary">D</button>
-                <button routerLink="week" class="m-1 btn btn-light btn-outline-primary">1D</button> -->
-                
-            </li>
-            
+            <li class= "nav-item"></li>      
         </ul>
 
     </nav>
-
-<!-- <button routerLink="line/w" class="m-1 btn btn-light btn-outline-primary">W</button>
-<button routerLink="line/m" class="m-1 btn btn-light btn-outline-primary">M</button> -->
     
-
-<!-- <app-chart></app-chart> -->
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
 </div>
