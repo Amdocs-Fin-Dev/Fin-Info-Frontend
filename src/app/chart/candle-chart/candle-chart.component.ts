@@ -104,14 +104,15 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
   }
 
   ChartList: any = [];
-  
+  id: string = "ALSEA.MX"
+  interval: string = "1d"
   ngOnInit(): void {
     this.refreshChartList();
 
   }
 
   refreshChartList(){
-    this.service.getDepList().subscribe(data=>{
+    this.service.getDepListTest(this.id, this.interval).subscribe(data=>{
       this.ChartList = data;
       this.ChartList = JSON.parse(this.ChartList)
       console.log(typeof(this.ChartList))

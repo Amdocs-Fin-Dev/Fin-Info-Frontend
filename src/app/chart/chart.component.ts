@@ -11,9 +11,9 @@ export class ChartComponent implements OnInit {
   constructor(private service:SharedService) { }
 
   ChartList: any = [];
-  
+  id: string = "AEROMEX.MX";
   ngOnInit(): void {
-    this.refreshChartList();
+    // this.refreshChartList();
 
 /*     $(document).ready(function() {
       alert('I am Called From jQuery');
@@ -25,15 +25,15 @@ export class ChartComponent implements OnInit {
   }
 
 
-  refreshChartList(){
-    this.service.getDepList().subscribe(data=>{
-      this.ChartList = data;
-      this.ChartList = JSON.parse(this.ChartList)
-      console.log(typeof(this.ChartList))
-      console.log(this.ChartList)
-    });
+  // refreshChartList(){
+  //   this.service.getDepListTest(this.id).subscribe(data=>{
+  //     this.ChartList = data;
+  //     this.ChartList = JSON.parse(this.ChartList)
+  //     // console.log(typeof(this.ChartList))
+  //     console.log(this.ChartList)
+  //   });
 
     
-  }
+  // }
 
 }
