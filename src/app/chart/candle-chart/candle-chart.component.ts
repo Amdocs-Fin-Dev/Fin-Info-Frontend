@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { SharedService } from '../../shared.service';
+import { ChartType,GoogleChartsModule } from 'angular-google-charts';
+
 declare var google: any;
 
 @Component({
@@ -15,7 +17,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
     const data = new google.visualization.DataTable();
 
     let keys = []; //key values
-    let values_high = []; //high
+    let values_high = [];
     let values_low = [];
     let values_close = [];
     let values_open = [];
@@ -27,18 +29,16 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
       keys.push(k);
     }
 
-    // console.log("Muestra algo",keys)
+      //console.log("Muestra algo",keys)
       //en values almacenamos los valores de nuestro json teniendo como key la fecha en epoch unix
       for (var i = 0; i < keys.length; i++) {
         //console.log(list['High'][keys[i]]);
-
         values_high.push(list['High'][keys[i]]);
         values_low.push(list['Low'][keys[i]]);
         values_open.push(list['Open'][keys[i]]);
         values_close.push(list['Close'][keys[i]]);
       }
 
-      //Parte que no funciona!
     //almacenamos nuestras keys en un array que sigue siendo un objecto pero asi ya podemos manipular los datos
       var array:Array<string> = Object.values(keys);
       // console.log("Tipo de mi array: ", typeof (array));
@@ -98,35 +98,38 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
 
   constructor(private service:SharedService) { }
-  ngAfterViewInit(): void {
-    // throw new Error('Method not implemented.');
-    console.log("ngAfterInit() started...")
-  }
 
   ChartList: any = [];
+  myVarible: any = [];
   id: string = "ALSEA.MX"
   interval: string = "1d"
   ngOnInit(): void {
-    this.refreshChartList();
-
+    this.refreshChartList('1d');
+    
   }
 
-  refreshChartList(){
-    this.service.getDepListTest(this.id, this.interval).subscribe(data=>{
+  refreshChartList(interval:string){
+    this.service.getDepListTest(this.id, interval).subscribe(data=>{
       this.ChartList = data;
-      this.ChartList = JSON.parse(this.ChartList)
-      console.log(typeof(this.ChartList))
-      console.log(this.ChartList)
+      this.ChartList = JSON.parse(this.ChartList);
       google.charts.load('current', {packages: ['corechart']});
       google.charts.setOnLoadCallback(this.drawChart);
     });
 
   }
 
-/*     ngAfterViewInit(): void {
-      google.charts.load('current', {packages: ['corechart']});
-      google.charts.setOnLoadCallback(this.drawChart);
-    } */
+  actualizar(interval:string){
+    // console.log(this.service.getData(this.id,interval));
+    this.ChartList = this.service.getData(this.id,interval);
+    console.log("Just ...", this.ChartList);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart);
+    
+  }
+
+     ngAfterViewInit(): void {
+
+    } 
 
 }
 

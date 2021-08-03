@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { interval } from 'rxjs';
 import { SharedService } from '../../shared.service';
 declare var google: any;
 @Component({
@@ -37,8 +38,6 @@ export class LineChartComponent implements OnInit, AfterViewInit {
         values_open.push(list['Open'][keys[i]]);
         values_close.push(list['Close'][keys[i]]);
       }
-
-      //Parte que no funciona!
     //almacenamos nuestras keys en un array que sigue siendo un objecto pero asi ya podemos manipular los datos
       var array:Array<string> = Object.values(keys);
       // console.log("Tipo de mi array: ", typeof (array));
@@ -100,6 +99,9 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private service:SharedService) { }
+
+  id: string = "ALSEA.MX"
+
   ngAfterViewInit(): void {
     console.log("ngAfterView");
   }
@@ -107,16 +109,14 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   ChartList: any = [];
 
   ngOnInit(): void {
-  this.refreshChartList();
+  this.refreshChartList('1d');
 
   }
 
-  refreshChartList(){
-    this.service.getDepList().subscribe(data=>{
+  refreshChartList(interval:string){
+    this.service.getDepListTest(this.id,interval ).subscribe(data=>{
       this.ChartList = data;
-      this.ChartList = JSON.parse(this.ChartList)
-      console.log(typeof(this.ChartList))
-      console.log(this.ChartList)
+      this.ChartList = JSON.parse(this.ChartList);
       google.charts.load('current', {packages: ['corechart', 'line']});
       google.charts.setOnLoadCallback(this.drawChart);
     });

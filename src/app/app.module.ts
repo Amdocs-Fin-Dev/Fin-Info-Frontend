@@ -9,25 +9,15 @@ import { GoogleChartsModule } from 'angular-google-charts'
 
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PieChartComponent } from './chart/pie-chart/pie-chart.component';
 import { LineChartComponent } from './chart/line-chart/line-chart.component';
 import { CandleChartComponent } from './chart/candle-chart/candle-chart.component';
-import { WeekChartComponent } from './week-chart/week-chart.component';
-import { MonthChartComponent } from './month-chart/month-chart.component';
-import { MonthCandleChartComponent } from './chart/candle-chart/month-candle-chart/month-candle-chart.component';
-import { WeekCandleChartComponent } from './chart/candle-chart/week-candle-chart/week-candle-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    PieChartComponent,
     LineChartComponent,
-    CandleChartComponent,
-    WeekChartComponent,
-    MonthChartComponent,
-    MonthCandleChartComponent,
-    WeekCandleChartComponent
+    CandleChartComponent
   ],
   imports: [
     BrowserModule,
