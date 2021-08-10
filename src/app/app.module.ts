@@ -42,8 +42,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         providers:[
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '945529565086-5dv1q0mh9po4hgjlq3rvse054fj19e7t.apps.googleusercontent.com'
+            provider: new GoogleLoginProvider(''
             )
           }
         ]
