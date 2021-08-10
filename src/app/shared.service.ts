@@ -38,4 +38,21 @@ readonly APIUrl = "http://127.0.0.1:8000/";
       return this.ChartList;
   }
 
+//For Dashboard
+  getUserList():Observable<any[]>{
+    this.data = this.http.get<any[]>(this.APIUrl + 'api/' );
+    console.log("Datos",this.data);
+    return this.http.get<any[]>(this.APIUrl + 'api/');
+  }
+
+  addUser(val:any){
+    return this.http.post<any>(this.APIUrl + 'api/', val);
+  }
+
+  getPorfolio(email: string):Observable<any[]>{
+    this.data = this.http.get<any[]>(this.APIUrl + 'portfolio/' + email);
+    return this.data = this.http.get<any[]>(this.APIUrl + 'portfolio/' + email);
+
+  }
+
 }
