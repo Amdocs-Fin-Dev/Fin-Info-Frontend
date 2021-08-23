@@ -24,9 +24,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       //redireccionamos la url al dashboard donde esta el componente dashboard
       this.router.navigateByUrl('/dashboard').then();
-      // process.env.GOOGLE_ID;
-      // console.log('Este es el ID');
-      // console.log(process.env.GOOGLE_ID);
+
     });
   }
 
