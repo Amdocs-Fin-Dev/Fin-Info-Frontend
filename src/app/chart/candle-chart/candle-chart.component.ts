@@ -101,15 +101,16 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
   ChartList: any = [];
   myVarible: any = [];
-  id: string = "ALSEA.MX"
+  id: string = "ALSEA.MX";
   interval: string = "1d"
+  period:string = "1y";
   ngOnInit(): void {
     this.refreshChartList('1d');
     
   }
 
   refreshChartList(interval:string){
-    this.service.getDepListTest(this.id, interval).subscribe(data=>{
+    this.service.getDepListTest(this.id, interval, this.period).subscribe(data=>{
       this.ChartList = data;
       this.ChartList = JSON.parse(this.ChartList);
       google.charts.load('current', {packages: ['corechart']});
@@ -118,14 +119,14 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
   }
 
-  actualizar(interval:string){
-    // console.log(this.service.getData(this.id,interval));
-    this.ChartList = this.service.getData(this.id,interval);
-    console.log("Just ...", this.ChartList);
-    google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(this.drawChart);
+  // actualizar(interval:string){
+  //   // console.log(this.service.getData(this.id,interval));
+  //   this.ChartList = this.service.getData(this.id,interval, this.period);
+  //   console.log("Just ...", this.ChartList);
+  //   google.charts.load('current', {packages: ['corechart']});
+  //   google.charts.setOnLoadCallback(this.drawChart);
     
-  }
+  // }
 
      ngAfterViewInit(): void {
 

@@ -100,7 +100,8 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
   constructor(private service:SharedService) { }
 
-  id: string = "ALSEA.MX"
+  id: string = "ALSEA.MX";
+  period:string = "1y";
 
   ngAfterViewInit(): void {
     console.log("ngAfterView");
@@ -114,7 +115,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   }
 
   refreshChartList(interval:string){
-    this.service.getDepListTest(this.id,interval ).subscribe(data=>{
+    this.service.getDepListTest(this.id,interval, this.period).subscribe(data=>{
       this.ChartList = data;
       this.ChartList = JSON.parse(this.ChartList);
       google.charts.load('current', {packages: ['corechart', 'line']});

@@ -27,6 +27,11 @@
       padding: 0 10px;
     } */
   }
+
+  .horizontal-line-text span {
+      background: white;
+      padding: 0 10px;
+    } 
   
   .google-sign-in {
     background-color: white;
@@ -37,13 +42,15 @@
     height: 100%;
     float: center;
   
-    /* img {
-      float: left;
-    } */
+
   }
- 
+ .google-sign-in img{
+   float: left
+ }
   .user-avatar {
     height: 100px;
     width: 100px;
     border-radius: 50%;
   }
+
+  
