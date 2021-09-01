@@ -41,8 +41,7 @@
     font-weight: bold;
     height: 100%;
     float: center;
-  
-
+    font-size: medium;
   }
  .google-sign-in img{
    float: left

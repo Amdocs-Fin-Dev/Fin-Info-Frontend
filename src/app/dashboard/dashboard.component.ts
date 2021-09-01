@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
     if (storage) {
       //convertimos la data
       this.userDetails = JSON.parse(storage);
+      localStorage.setItem('email', this.userDetails.email);
     } else {
       this.signOut();
     }
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit {
   signOut(): void {
     //removemos el usuario removiendo del local storage la data
     localStorage.removeItem('google_auth');
+    localStorage.removeItem('email');
     this.router.navigateByUrl('/').then();
   }
 

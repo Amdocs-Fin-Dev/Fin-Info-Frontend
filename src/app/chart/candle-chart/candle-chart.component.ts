@@ -101,7 +101,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
   ChartList: any = [];
   myVarible: any = [];
-  id: string = "ALSEA.MX";
+  id: string = "AAPL";
   interval: string = "1d"
   period:string = "1y";
   ngOnInit(): void {
@@ -116,7 +116,12 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
       google.charts.load('current', {packages: ['corechart']});
       google.charts.setOnLoadCallback(this.drawChart);
     });
+    //esto se pondria en la funcion de buscar a la hora de que se agarre el id
+    this.saveLocalStorage();
+  }
 
+  saveLocalStorage(){
+    localStorage.setItem("ticker_id", this.id);
   }
 
   // actualizar(interval:string){

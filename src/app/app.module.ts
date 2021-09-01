@@ -14,6 +14,11 @@ import { CandleChartComponent } from './chart/candle-chart/candle-chart.componen
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FavoriteButtonComponent } from './chart/favorite-button/favorite-button.component';
+import { AnalysisComponent } from './analysis/analysis.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LineChartComponent,
     CandleChartComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    FavoriteButtonComponent,
+    AnalysisComponent,
+
   ],
   imports: [
     BrowserModule,
