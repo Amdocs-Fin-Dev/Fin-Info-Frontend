@@ -57,6 +57,11 @@ readonly APIUrl = "http://127.0.0.1:8000/";
 
   }
 
+  getAnalisis(ticker: string):Observable<any[]>{
+    this.data = this.http.get<any[]>(this.APIUrl + 'analisis/' + ticker)
+    return this.data = this.http.get<any[]>(this.APIUrl + 'analisis/' + ticker)
+  }
+
   addPortfolio(val:any){
     return this.http.post<any>(this.APIUrl+ 'account/addfavorites/',val);
   }
