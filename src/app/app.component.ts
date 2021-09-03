@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,ElementRef,OnInit, ViewChild } from '@angular/core';
 import { ChartType } from 'angular-google-charts';
+// For MDB Angular Free
+import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 
 @Component({
   selector: 'app-root',
@@ -50,6 +52,19 @@ export class AppComponent {
     console.log("Si funcionaste :3");
   }
 
+
+  @ViewChild('txtBuscar') txtBuscar!:ElementRef<HTMLInputElement>;
+  buscar():void{
+    const valor = this.txtBuscar.nativeElement.value;
+    localStorage.setItem("ticker_id", valor);
+    console.log("Valor de la busqueda: ",valor);
+    if (valor.trim().length === 0 ){
+      return;
+    }
+    this.txtBuscar.nativeElement.value= '';
+  }
+
+
 }
 
 
@@ -70,4 +85,4 @@ export class AppComponent {
 //       maxZoomIn: 10,
 //       maxZoomOut: 7
 //       }
-// };
+// }
