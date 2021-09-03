@@ -100,7 +100,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
   constructor(private service:SharedService) { }
 
-  id: string = "AAPL";
+  id:  any = localStorage.getItem('ticker_id');
   period:string = "1y";
 
   ngAfterViewInit(): void {
