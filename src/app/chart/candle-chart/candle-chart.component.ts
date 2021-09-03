@@ -101,7 +101,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
   ChartList: any = [];
   myVarible: any = [];
-  id: string = "AAPL";
+  id: any = localStorage.getItem('ticker_id');
   interval: string = "1d"
   period:string = "1y";
   ngOnInit(): void {
