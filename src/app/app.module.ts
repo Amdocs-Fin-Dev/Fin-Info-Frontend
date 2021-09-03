@@ -16,8 +16,11 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FavoriteButtonComponent } from './chart/favorite-button/favorite-button.component';
 import { AnalysisComponent } from './analysis/analysis.component';
+import { FooterComponent } from './footer/footer.component';
 
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // If You need animations
 
 
 @NgModule({
@@ -30,6 +33,7 @@ import { AnalysisComponent } from './analysis/analysis.component';
     DashboardComponent,
     FavoriteButtonComponent,
     AnalysisComponent,
+    FooterComponent,
 
   ],
   imports: [
@@ -39,7 +43,10 @@ import { AnalysisComponent } from './analysis/analysis.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    BrowserModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [
     SharedService,
@@ -60,6 +67,7 @@ import { AnalysisComponent } from './analysis/analysis.component';
   
   
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
