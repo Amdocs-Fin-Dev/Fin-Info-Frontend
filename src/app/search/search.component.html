@@ -1,0 +1,9 @@
+<div class="container mt-5">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm" (keyup)="applyFilter()">
+  <table class="table">
+     <!-- <h3>{{ticker_id| json}}</h3> -->
+     <tr *ngFor="let ticker of stocksRecords">
+          <!-- <a>  {{(user + '').split(",")[1]}}</a> -->
+          <a> {{ ticker }}</a>
+        </tr>
