@@ -15,12 +15,15 @@ readonly APIUrl = "http://127.0.0.1:8000/";
   public portafolio: any = [];
   data: any = [];
   public ChartList: any = [];
+  tickerid = localStorage.getItem('ticker_id')
 
   constructor(private http: HttpClient) { }
   
-  getDepListTest(ticker_id: string, interval: string, period:string):Observable<any[]>{
+  //le quite el tickerid de parametro
+  getDepListTest(ticker_id:string, interval: string, period:string):Observable<any[]>{
     // console.log(ticker_id);
     // console.log(interval);
+    // const ticker_id = this.tickerid
     this.data = this.http.get<any[]>(this.APIUrl + 'mostrar/' + ticker_id + '/' + interval + '/' + period);
     // console.log("Datos",this.data);
     return this.http.get<any[]>(this.APIUrl + 'mostrar/' + ticker_id + '/' + interval  + '/' + period);
@@ -75,6 +78,11 @@ readonly APIUrl = "http://127.0.0.1:8000/";
       this.portafolio = res;
       console.log("nuevo port: ",this.portafolio);
     });
+  }
+
+  getSearchList(filterTerm: string ):Observable<any[]>{
+    this.data = this.http.get<any[]>(this.APIUrl + 'search/' + filterTerm);
+    return this.http.get<any[]>(this.APIUrl + 'search/' + filterTerm);
   }
 
 }
