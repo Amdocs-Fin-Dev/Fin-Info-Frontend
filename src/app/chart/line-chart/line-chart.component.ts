@@ -115,7 +115,8 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   }
 
   refreshChartList(interval:string){
-    this.service.getDepListTest(this.id,interval, this.period).subscribe(data=>{
+    //antes con this.id como parametro
+    this.service.getDepListTest(this.id, interval, this.period).subscribe(data=>{
       this.ChartList = data;
       this.ChartList = JSON.parse(this.ChartList);
       google.charts.load('current', {packages: ['corechart', 'line']});

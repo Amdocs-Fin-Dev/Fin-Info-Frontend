@@ -15,13 +15,14 @@ export class AnalysisComponent implements OnInit {
   adxState: string = "";
   stoOsState: string = "";
   avgTrueState: string = "";
+  tickerid: any = localStorage.getItem('ticker_id');
 
   ngOnInit(): void {
     this.showAnalysis();
   }
 
   showAnalysis(){
-    this.service.getAnalisis("AAPL").subscribe(data=>{
+    this.service.getAnalisis(this.tickerid).subscribe(data=>{
       this.dataAnalisis = data;
       this.dataAnalisis = JSON.parse(this.dataAnalisis);
       console.table(this.dataAnalisis);

@@ -20,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // If You need animations
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchComponent } from './search/search.component'; // If You need animations
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
     FavoriteButtonComponent,
     AnalysisComponent,
     FooterComponent,
+    SearchComponent,
 
   ],
   imports: [

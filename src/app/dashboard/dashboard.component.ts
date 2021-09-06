@@ -155,6 +155,7 @@ export class DashboardComponent implements OnInit {
     let arr4: Array<any> = Object.values(keys);
     for(let j = 0; j < keys.length; j++){
       let temp: string = keys[j];
+      //antes temp en el parametro del tickerid
       this.service.getDepListTest(temp,this.interval, this.period).subscribe(res=>{
         // console.log("Key List: ", this.Keys);
         // console.log('Llaves', this.Keys[j]);

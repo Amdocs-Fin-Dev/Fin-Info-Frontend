@@ -2,6 +2,7 @@ import { Component,ElementRef,OnInit, ViewChild } from '@angular/core';
 import { ChartType } from 'angular-google-charts';
 // For MDB Angular Free
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
+import { SharedService } from './shared.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,10 @@ import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 export class AppComponent {
   // title = 'Angular 12';
  //agregue manualmente el constructor y el ngOnInit no se porque
-  // constructor(){}
+
+ //para manana poner en el buscar los servicios para hacer la busqueda
+  //en el line chart, candle chart y en technical analysis
+  constructor(private shared: SharedService){}
 
   title = '';
   type:any = 'CandlestickChart';
@@ -60,7 +64,10 @@ export class AppComponent {
     console.log("Valor de la busqueda: ",valor);
     if (valor.trim().length === 0 ){
       return;
+    }else{
+      
     }
+    window.location.reload();
     this.txtBuscar.nativeElement.value= '';
   }
 
