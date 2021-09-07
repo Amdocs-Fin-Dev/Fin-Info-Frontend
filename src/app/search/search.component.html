@@ -3,7 +3,10 @@
       <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm" (keyup)="applyFilter()">
   <table class="table">
      <!-- <h3>{{ticker_id| json}}</h3> -->
-     <tr *ngFor="let ticker of stocksRecords">
+     <tr *ngFor="let ticker of stocksRecords" >
           <!-- <a>  {{(user + '').split(",")[1]}}</a> -->
-          <a> {{ ticker }}</a>
+          <a class="list-group-item"
+          style="cursor: pointer"
+          (click)="save(ticker)"> 
+          {{ ticker }}</a>
         </tr>
