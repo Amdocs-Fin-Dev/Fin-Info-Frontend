@@ -53,8 +53,12 @@ export class SearchComponent implements OnInit {
     console.log("Ticker buscado:", ticker);
     console.log("Ticker buscado:", typeof(ticker));
     this.ticker_id = ticker.toString();
+    localStorage.setItem("ticker_id", this.ticker_id);
     console.log(this.ticker_id);
     console.log(typeof(this.ticker_id));
+    this.txtBuscar.nativeElement.value= this.ticker_id;
+    window.location.reload();
+    this.txtBuscar.nativeElement.value= '';
   }
   //metodo para seleccionar el tickerid y eso mandarlo al local storage y que se haga el refresh
 
