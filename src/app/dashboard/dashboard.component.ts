@@ -99,6 +99,7 @@ export class DashboardComponent implements OnInit {
     this.txtBuscar.nativeElement.value= '';
     this.addPortfolio(this.ActualEmail, valor);
     this.current_ticker = valor;
+    window.location.reload();
     //here
     //COMMENTED HERE! IF SOMETHING DOESN'T WORK, UNCOMENT
     // this.getPortfolioData(valor);
