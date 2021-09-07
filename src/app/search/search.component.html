@@ -1,12 +1,15 @@
-<div class="container mt-5">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm" (keyup)="applyFilter()">
-  <table class="table">
-     <!-- <h3>{{ticker_id| json}}</h3> -->
-     <tr *ngFor="let ticker of stocksRecords" >
-          <!-- <a>  {{(user + '').split(",")[1]}}</a> -->
-          <a class="list-group-item"
-          style="cursor: pointer"
-          (click)="save(ticker)"> 
-          {{ ticker }}</a>
-        </tr>
+<!-- <div class="container-xl"> -->
+    <!-- <div class="form-group"> -->
+      <input type="text" class="form-control" placeholder="Search Ticket..."
+      [(ngModel)]="filterTerm" (keyup.enter)="buscar()" (keyup)="applyFilter()"  #txtBuscar>
+      <div class="container-xl">
+        <ul class="list-group">
+            <tr *ngFor="let ticker of stocksRecords" >
+             <!-- <a>  {{(user + '').split(",")[1]}}</a> -->
+             <a class="list-group-item"
+             style="cursor: pointer"
+             (click)="save(ticker)" > 
+                {{ ticker }}</a>
+            </tr>
+        </ul>
+      <!-- </div> -->
