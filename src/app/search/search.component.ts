@@ -10,14 +10,16 @@ export class SearchComponent implements OnInit {
 
   constructor(private service: SharedService) { }
 
-  ticker_id:any = '';
+  ticker_id:string = '';
 
   filterTerm: string = '';
   
-  stocksRecords = [{
+  // stocksRecords = [{
 
-    },          
-  ];
+  //   },          
+  // ];
+
+  stocksRecords:any = [];
 
   ngOnInit(): void {
   }
@@ -46,5 +48,14 @@ export class SearchComponent implements OnInit {
     window.location.reload();
     this.txtBuscar.nativeElement.value= '';
   }
+
+  save(ticker: any){
+    console.log("Ticker buscado:", ticker);
+    console.log("Ticker buscado:", typeof(ticker));
+    this.ticker_id = ticker.toString();
+    console.log(this.ticker_id);
+    console.log(typeof(this.ticker_id));
+  }
+  //metodo para seleccionar el tickerid y eso mandarlo al local storage y que se haga el refresh
 
 }
