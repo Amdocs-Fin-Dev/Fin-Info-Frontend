@@ -80,11 +80,12 @@
           </div>
       </form> -->
 
-      <input type="text" 
+      <!-- <input type="text" 
       class="form-control" 
       placeholder="Search Ticket..."
       (keyup.enter)= "buscar()"
-      #txtBuscar>
+      #txtBuscar> -->
+      <app-search></app-search>
   </links>
   <!-- Collapsible content -->
 
@@ -109,8 +110,7 @@
         </ul>
         <br>
     </nav>
-    
-    
+
     <router-outlet></router-outlet>
 
     <app-analysis></app-analysis>
@@ -118,5 +118,5 @@
 </div>
 <br>
 <br>
-<app-search></app-search>
+
 <app-footer></app-footer>
