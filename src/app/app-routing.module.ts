@@ -7,12 +7,13 @@ import { CandleChartComponent } from './chart/candle-chart/candle-chart.componen
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AnalysisComponent } from './analysis/analysis.component';
+import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis.component';
 
 const routes: Routes = [
   {path: 'mostrar/', component: ChartComponent},
   {path: 'line', component: LineChartComponent},
   {path: 'candle', component: CandleChartComponent},
-  {path: 'analisis',component: AnalysisComponent},
+  {path: 'analisis',component: ChartAnalysisComponent},
   // {
   //   path: '',
   //   redirectTo: 'login',
