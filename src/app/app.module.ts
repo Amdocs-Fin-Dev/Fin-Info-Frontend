@@ -22,6 +22,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
+import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { SearchComponent } from './search/search.component';
     AnalysisComponent,
     FooterComponent,
     SearchComponent,
+    ChartAnalysisComponent,
   
 
   ],

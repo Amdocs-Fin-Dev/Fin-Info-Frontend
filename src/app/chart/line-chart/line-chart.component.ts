@@ -75,16 +75,17 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
     const options = {
       hAxis: {
-        title: 'Date'
+        // title: 'Date'
 
       },
       vAxis: {
         title: 'Average'
       },
-      backgroundColor: '#eef2eb',
+      chartArea: {'width': '90%', 'height': '80%'},
+      // backgroundColor: '#eef2eb',
 
       series: {
-        0: { color: '#3fcfd4' }
+        // 0: { color: '#3fcfd4' }
       },
       explorer: { 
         //actions: ['dragToZoom', 'rightClickToReset'],

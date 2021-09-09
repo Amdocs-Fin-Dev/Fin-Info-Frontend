@@ -84,6 +84,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
               fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
               risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
             },
+            chartArea: {'width': '90%', 'height': '80%'},
             explorer: { 
               //actions: ['dragToZoom', 'rightClickToReset'],
               axis: 'horizontal',
