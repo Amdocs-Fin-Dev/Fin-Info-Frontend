@@ -98,7 +98,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
 
   constructor(private service:SharedService) { }
-
+  title = localStorage.getItem('ticker_id');
   ChartList: any = [];
   myVarible: any = [];
   id: any = localStorage.getItem('ticker_id');

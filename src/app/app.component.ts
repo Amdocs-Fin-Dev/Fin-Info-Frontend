@@ -3,6 +3,7 @@ import { ChartType } from 'angular-google-charts';
 // For MDB Angular Free
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 import { SharedService } from './shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,31 @@ import { SharedService } from './shared.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public userDetails:any;
   // title = 'Angular 12';
  //agregue manualmente el constructor y el ngOnInit no se porque
 
  //para manana poner en el buscar los servicios para hacer la busqueda
   //en el line chart, candle chart y en technical analysis
-  constructor(private shared: SharedService){}
+  constructor(private router: Router, private shared: SharedService){}
+  ngOnInit(): void {
 
-  title = '';
+    const storage = localStorage.getItem('google_auth');
+
+    if (storage) {
+      //convertimos la data
+      this.userDetails = JSON.parse(storage);
+    }
+  }
+
+  signOut(): void {
+    //removemos el usuario removiendo del local storage la data
+    localStorage.removeItem('google_auth');
+    localStorage.removeItem('email');
+    this.router.navigateByUrl('/').then();
+    window.location.reload();
+  }
+  title = localStorage.getItem('ticker_id');
   type:any = 'CandlestickChart';
   data = [
      [1625011200000, 20, 28, 38, 45],

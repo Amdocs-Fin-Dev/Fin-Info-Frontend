@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       //redireccionamos la url al dashboard donde esta el componente dashboard
       this.router.navigateByUrl('/dashboard').then();
+      window.location.reload();
 
     });
   }

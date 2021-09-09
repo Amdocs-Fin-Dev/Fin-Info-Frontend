@@ -6,11 +6,13 @@ import { LineChartComponent } from './chart/line-chart/line-chart.component';
 import { CandleChartComponent } from './chart/candle-chart/candle-chart.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 const routes: Routes = [
   {path: 'mostrar/', component: ChartComponent},
   {path: 'line', component: LineChartComponent},
   {path: 'candle', component: CandleChartComponent},
+  {path: 'analisis',component: AnalysisComponent},
   // {
   //   path: '',
   //   redirectTo: 'login',

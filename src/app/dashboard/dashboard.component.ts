@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
     //removemos el usuario removiendo del local storage la data
     localStorage.removeItem('google_auth');
     localStorage.removeItem('email');
-    this.router.navigateByUrl('/').then();
+    this.router.navigateByUrl('/candle').then();
   }
 
   //I dont use it 
