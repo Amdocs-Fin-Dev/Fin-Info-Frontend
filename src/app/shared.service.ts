@@ -60,9 +60,9 @@ readonly APIUrl = "http://127.0.0.1:8000/";
 
   }
 
-  getAnalisis(ticker: string):Observable<any[]>{
-    this.data = this.http.get<any[]>(this.APIUrl + 'analisis/' + ticker)
-    return this.data = this.http.get<any[]>(this.APIUrl + 'analisis/' + ticker)
+  getAnalisis(ticker: string, flag: string):Observable<any[]>{
+    this.data = this.http.get<any[]>(this.APIUrl + 'analisis/' + ticker + '/' + flag)
+    return this.data = this.http.get<any[]>(this.APIUrl + 'analisis/' + ticker+ '/' + flag)
   }
 
   addPortfolio(val:any){
