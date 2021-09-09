@@ -22,7 +22,7 @@ export class AnalysisComponent implements OnInit {
   }
 
   showAnalysis(){
-    this.service.getAnalisis(this.tickerid).subscribe(data=>{
+    this.service.getAnalisis(this.tickerid, "1").subscribe(data=>{
       this.dataAnalisis = data;
       this.dataAnalisis = JSON.parse(this.dataAnalisis);
       console.table(this.dataAnalisis);
