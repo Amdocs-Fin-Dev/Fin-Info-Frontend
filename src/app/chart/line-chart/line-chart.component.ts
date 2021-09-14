@@ -79,7 +79,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
       },
       vAxis: {
-        title: 'Average'
+        // title: 'Average'
       },
       chartArea: {'width': '90%', 'height': '80%'},
       // backgroundColor: '#eef2eb',
@@ -100,7 +100,7 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private service:SharedService) { }
-
+  title = localStorage.getItem('ticker_id');
   id:  any = localStorage.getItem('ticker_id');
   period:string = "1y";
 
@@ -122,15 +122,10 @@ export class LineChartComponent implements OnInit, AfterViewInit {
       this.ChartList = JSON.parse(this.ChartList);
       google.charts.load('current', {packages: ['corechart', 'line']});
       google.charts.setOnLoadCallback(this.drawChart);
-    });
-
-    
+    }); 
   }
 /*   ngAfterViewInit(): void {
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(this.drawChart);
   } */
-
-
-
 }

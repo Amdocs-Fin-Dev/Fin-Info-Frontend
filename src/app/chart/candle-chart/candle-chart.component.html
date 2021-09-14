@@ -1,15 +1,15 @@
-
+<h2 class="text-muted center-title">{{title}} Overview </h2>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1d')">1D</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1wk')">1W</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1mo')">1M</button>
-<h2 class="text-muted center-title">{{title}} </h2>
+
 <div class="align-right">
     <app-favorite-button></app-favorite-button>
 </div>
 
-
 <div #candleChart style="width: 100%; height: 200%;"></div>
-
+<br>
+<br>
 <app-analysis></app-analysis>
 <!-- <google-chart #chart
 [title]="title"
