@@ -1,10 +1,10 @@
 <!-- <div class="container-xl"> -->
-    <!-- <div class="form-group"> -->
-      <input type="text" class="form-control" placeholder="Search Ticket..."
+    <div class="position-relative bg-secondary">
+      <input type="text" class="form-control h-25 d-inline-block " placeholder="Search Ticket..."
       [(ngModel)]="filterTerm" (keyup.enter)="buscar()" (keyup)="applyFilter()"  #txtBuscar>
       <div class="container-xl">
         <!-- <ul class="list-group"> -->
-        <ul class="list-group">
+        <ul class="list-group position-absolute top-22 start-0 p-2">
             <tr *ngFor="let ticker of stocksRecords" >
              <!-- <a>  {{(user + '').split(",")[1]}}</a> -->
              <a class="list-group-item"
@@ -13,4 +13,4 @@
                 {{ ticker }}</a>
             </tr>
         </ul>
-      <!-- </div> -->
+      </div>
