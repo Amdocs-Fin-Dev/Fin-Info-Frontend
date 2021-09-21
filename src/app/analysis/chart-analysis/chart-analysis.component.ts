@@ -82,7 +82,7 @@ export class ChartAnalysisComponent implements OnInit, AfterViewInit {
         
       },
       // backgroundColor: '#eef2eb',
-      chartArea: {'width': '100%', 'height': '100%'},
+      chartArea: {'width': '90%', 'height': '80%'},
                'legend': {'position': 'bottom'},
       // legend: 'series',
       // width: 1000,
@@ -133,8 +133,8 @@ export class ChartAnalysisComponent implements OnInit, AfterViewInit {
 
     data.addColumn('datetime', 'Date');
     data.addColumn('number', 'RSI');
-    data.addColumn('number', 'stOscillator');
-    data.addColumn('number', 'adx');
+    data.addColumn('number', 'Stochasticall Oscillator');
+    data.addColumn('number', 'ADX');
     data.addColumn('number', 'AvgTrueRange');
     var array:Array<string> = Object.values(this.dataAnalisis.Date);
      //Convertimos nuestro array de objectos con las fechas en epoch en enteros
@@ -158,6 +158,7 @@ export class ChartAnalysisComponent implements OnInit, AfterViewInit {
     stOscillator = this.dataAnalisis.stOscillator;
     adx = this.dataAnalisis.adx;
     AvgTrueRange = this.dataAnalisis.AvgTrueRange;
+
     for(var i = 0; i < index; i++){
       console.log("valores",rsi[i]);
       data.addRows([[dates[i],close[i],rsi[i],
@@ -166,14 +167,14 @@ export class ChartAnalysisComponent implements OnInit, AfterViewInit {
 
     const options = {
       hAxis: {
-        title: 'Tecnichal Indicators'
+        // title: 'Tecnichal Indicators'
 
       },
       vAxis: {
         // title: 'Average'
         
       },
-      chartArea: {'width': '100%', 'height': '100%'},
+      chartArea: {'width': '90%', 'height': '80%'},
       // backgroundColor: '#eef2eb',
       'legend': {'position': 'bottom'},
       lineWidth: 2,
