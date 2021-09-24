@@ -9,24 +9,32 @@
     </thead>
     <tbody>
         <tr>
-            <td> RSI </td>
+            <td data-bs-toggle="tooltip" data-bs-placement="top" 
+            title="RSI tracks overbought and oversold levels by measuring the velocity of price movements."
+            > RSI </td>
             <td> {{ dataAnalisis.rsi }}  </td>
             <td> {{ rsiState }} </td>
         </tr>
         <tr>
-            <td> ADX </td>
+            <td data-bs-toggle="tooltip" data-bs-placement="top" 
+            title="ADX is used to quantify trend strength. ADX calculations are based on a moving average of price range expansion over a given period of time."
+            > ADX </td>
             <td> {{ dataAnalisis.adx }} </td>
             <td class="left textNum bold"> 
                 <span class="bold"> {{ adxState }} </span>
             </td>
         </tr>
         <tr>
-            <td>Stochastic Oscillator</td>
+            <td data-bs-toggle="tooltip" data-bs-placement="top" 
+            title= "Momentum indicator comparing a particular closing price of a security to a range of its price over a certain period of time."
+            >Stochastic Oscillator</td>
             <td> {{ dataAnalisis.stOscillator}}</td>
             <td> {{ stoOsState }} </td>
         </tr>
         <tr>
-            <td>Avg True Range</td>
+            <td data-bs-toggle="tooltip" data-bs-placement="top" 
+            title="The Average True Range [ATR] is a market volatility indicator.The ATR is then a moving average, generally using 14 days, of the true ranges"
+            >Avg True Range</td>
             <td>{{ dataAnalisis.AvgTrueRange }}</td>
             <td>{{ avgTrueState }}</td>
         </tr>
