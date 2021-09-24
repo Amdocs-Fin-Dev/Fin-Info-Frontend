@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('google_auth', JSON.stringify(data));
       console.log(data);
       //redireccionamos la url al dashboard donde esta el componente dashboard
-      this.router.navigateByUrl('/dashboard').then();
+      // this.router.navigateByUrl('/dashboard').then();
       window.location.reload();
 
     });
