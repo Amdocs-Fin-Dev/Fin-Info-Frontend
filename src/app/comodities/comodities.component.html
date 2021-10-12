@@ -13,7 +13,7 @@
               title="GC"> Gold </td>  
               <td>{{gold[last]}}</td>
               <td>{{gold[last] - gold[last-1] | number}}</td>
-              <td>{{((gold[last] - gold[last-1]) * gold[last])/100 | number}}</td>
+              <td>{{((gold[last] - gold[last-1]) * 100)/gold[last] | number}} &#37;</td>
             </tr>
             <tr>
                 <!-- #Gold, Natural Gas, Silver, Crude Oil, Cocoa v  -->
@@ -21,28 +21,28 @@
                 title="NG"> Natural Gas </td>
                 <td>{{naturalGas[last] - naturalGas[last-1] | number}}</td>
                 <td>{{naturalGas[last]}}</td>
-                <td>{{((naturalGas[last] - naturalGas[last-1]) * naturalGas[last])/100 | number}}</td>
+                <td>{{((naturalGas[last] - naturalGas[last-1]) * 100)/silver[last] | number}} &#37; </td>
             </tr>
             <tr>
                 <td data-bs-toggle="tooltip" data-bs-placement="top" 
                 title="SI"> Silver </td>
                 <td>{{silver[last]}}</td>
                 <td>{{silver[last] - silver[last-1] | number}}</td>
-                <td>{{((silver[last] - silver[last-1]) * silver[last])/100 | number}}</td>
+                <td>{{((silver[last] - silver[last-1]) * 100)/silver[last] | number}} &#37;</td>
             </tr>
             <tr>
                 <td data-bs-toggle="tooltip" data-bs-placement="top" 
                 title= "CL">Crude Oil</td>
                 <td>{{crudeOil[last]}}</td>
                 <td>{{crudeOil[last] - crudeOil[last-1] | number}}</td>
-                <td>{{((crudeOil[last] - crudeOil[last-1]) * crudeOil[last])/100 | number}}</td>
+                <td>{{((crudeOil[last] - crudeOil[last-1]) * 100)/crudeOil[last] | number}} &#37;</td>
             </tr>
             <tr>
                 <td data-bs-toggle="tooltip" data-bs-placement="top" 
                 title= "CC">Cocoa</td>
                 <td>{{cocoa[last]}}</td>
                 <td>{{cocoa[last] - cocoa[last-1] | number}}</td>
-                <td>{{((cocoa[last] - cocoa[last-1]) * cocoa[last])/100 | number}}</td>
+                <td>{{((cocoa[last] - cocoa[last-1]) * 100)/cocoa[last] | number}} &#37;</td>
             </tr>
         </tbody>
 </table>
