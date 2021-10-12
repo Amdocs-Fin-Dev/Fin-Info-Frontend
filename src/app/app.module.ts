@@ -23,6 +23,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis.component';
+import { ComoditiesComponent } from './comodities/comodities.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis
     FooterComponent,
     SearchComponent,
     ChartAnalysisComponent,
+    ComoditiesComponent,
   
 
   ],
