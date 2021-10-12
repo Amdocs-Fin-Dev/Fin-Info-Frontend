@@ -16,6 +16,7 @@ readonly APIUrl = "http://127.0.0.1:8000/";
   data: any = [];
   public ChartList: any = [];
   tickerid = localStorage.getItem('ticker_id')
+  comodities: any = [];
 
   constructor(private http: HttpClient) { }
   
@@ -83,6 +84,11 @@ readonly APIUrl = "http://127.0.0.1:8000/";
   getSearchList(filterTerm: string ):Observable<any[]>{
     this.data = this.http.get<any[]>(this.APIUrl + 'search/' + filterTerm);
     return this.http.get<any[]>(this.APIUrl + 'search/' + filterTerm);
+  }
+
+  getComodities():Observable<any[]>{
+    this.comodities = this.http.get<any[]>(this.APIUrl + 'comodities/' );
+    return this.comodities = this.http.get<any[]>(this.APIUrl + 'comodities/' );
   }
 
 }
