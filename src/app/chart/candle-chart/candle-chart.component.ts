@@ -126,15 +126,6 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
     localStorage.setItem("ticker_id", this.id);
   }
 
-  // actualizar(interval:string){
-  //   // console.log(this.service.getData(this.id,interval));
-  //   this.ChartList = this.service.getData(this.id,interval, this.period);
-  //   console.log("Just ...", this.ChartList);
-  //   google.charts.load('current', {packages: ['corechart']});
-  //   google.charts.setOnLoadCallback(this.drawChart);
-    
-  // }
-
      ngAfterViewInit(): void {
 
     } 

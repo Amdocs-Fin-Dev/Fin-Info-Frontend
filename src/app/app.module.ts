@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis.component';
 import { ComoditiesComponent } from './comodities/comodities.component';
+import { ChartsComponent } from './comodities/charts/charts.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ComoditiesComponent } from './comodities/comodities.component';
     SearchComponent,
     ChartAnalysisComponent,
     ComoditiesComponent,
+    ChartsComponent,
   
 
   ],
