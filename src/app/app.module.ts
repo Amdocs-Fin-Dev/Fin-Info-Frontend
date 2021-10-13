@@ -25,7 +25,9 @@ import { SearchComponent } from './search/search.component';
 import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis.component';
 import { ComoditiesComponent } from './comodities/comodities.component';
 import { ChartsComponent } from './comodities/charts/charts.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ChartsComponent } from './comodities/charts/charts.component';
     ChartAnalysisComponent,
     ComoditiesComponent,
     ChartsComponent,
+    CarouselComponent,
   
 
   ],
@@ -56,6 +59,7 @@ import { ChartsComponent } from './comodities/charts/charts.component';
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [
     SharedService,
