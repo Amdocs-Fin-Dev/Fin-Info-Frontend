@@ -64,8 +64,8 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
       vAxis: {
         // title: 'Average'
       },
-      chartArea: {'width': '100%', 'height': '100%'},
-      // backgroundColor: '#eef2eb',
+      chartArea: {'left':'0','top':'20','width': '100%', 'height': '100%'},
+      // backgro    undColor: '#eef2eb',
 
       series: {
         0: { color: '#3fcfd4' }
@@ -78,7 +78,7 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
         }
     };
 
-    const chart = new google.visualization.LineChart(this.comodityChart.nativeElement);
+    const chart = new google.visualization.AreaChart(this.comodityChart.nativeElement);
     chart.draw(data,options);
 
   }
@@ -129,7 +129,7 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
       // console.log(this.datos["('GC=F', 'Close')"])
       // ('GC=F', 'Close'): 1765
 
-      google.charts.load('current', {packages: ['corechart', 'line']});
+      google.charts.load('current', {packages: ['corechart']});
       google.charts.setOnLoadCallback(this.drawChart);
     });
 
