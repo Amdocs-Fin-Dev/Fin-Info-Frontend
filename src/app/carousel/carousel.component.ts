@@ -23,7 +23,7 @@ export class CarouselComponent implements OnInit {
 
       for(var i = 0; i < this.noticias.length; i++){
         console.log(this.noticias[i].urlToImage);
-        this.images.push(this.noticias[i]);
+        this.images.push(this.noticias[i].urlToImage);
       }
       this.test = this.images[2];
       console.log("Imagenn",this.test);
