@@ -20,12 +20,13 @@ export class CarouselComponent implements OnInit {
   news(){
     this.service.getTopNews().subscribe((data:any)=>{
       this.noticias = data;
-
+      console.log(this.noticias)
       for(var i = 0; i < this.noticias.length; i++){
-        console.log(this.noticias[i].urlToImage);
+        // console.log(this.noticias[i].urlToImage);
         this.images.push(this.noticias[i].urlToImage);
+        // console.log(typeof(this.noticias[i].urlToImage));
       }
-      this.test = this.images[2];
+      // this.test = this.images[2];
       console.log("Imagenn",this.test);
     });
   }

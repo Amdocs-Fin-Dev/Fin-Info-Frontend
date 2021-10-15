@@ -1,14 +1,17 @@
 <ngb-carousel>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src= {{test}} alt="Angular Carousel 1">
+  <!-- Here we have the complete structure of Carousel. 
+    We just iterate through it with JsonResponse and that's it!~ -->
+    <ng-template ngbSlide *ngFor= "let item of noticias; index as i">
+      <div class="picsum-img-wrapper"  >
+        <img src= "{{noticias[i].urlToImage}}">
       </div>
       <div class="carousel-caption">
-        <h3>Title Goes Here</h3>
-        <p>{{ images }}</p>
+        <h3>{{ noticias[i].title }}</h3>
+        <p>nani</p>
       </div>
+      
     </ng-template>
-    <ng-template ngbSlide>
+    <!-- <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
         <img src="assets/images/jabami.jpg" alt="Angular Carousel 2">
       </div>
@@ -16,5 +19,5 @@
         <h3>Title Goes Here</h3>
         <p>Consectetur tortor volutpat pretium.</p>
       </div>
-    </ng-template>
+    </ng-template> -->
   </ngb-carousel>

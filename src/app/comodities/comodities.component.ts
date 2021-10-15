@@ -1,3 +1,4 @@
+import { isNull } from '@angular/compiler/src/output/output_ast';
 import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { isEmptyObject } from 'jquery';
 import { SharedService } from '../shared.service';
@@ -43,16 +44,22 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
     }
     //end for 
     const index = Object.keys(this.datosChart).length;
+    const index2 = dates.length;
+    console.log("INDEX",index);
     // console.log("Indices :3", index);
     // console.log("Indices valores", Object.keys(this.datos.Date));
     cocoa = this.datosChart;
     // console.log(cocoa);
-
-    for(var i = 0; i < 20; i++){
+    console.log("Fechas",dates);
+    console.log("Valores",cocoa);
+    for(var i = 0; i < index2; i++){
       // console.log("valoressss", cocoa[i]);
-      // if(cocoa[i] > 0){
+      if(cocoa[i] == null){
+        cocoa[i] = cocoa[i-1];
+      }
+      if(cocoa[i] > 0){
         data.addRows([[dates[i],cocoa[i]]]);
-      // }
+      }
     }
 
     const options = {
