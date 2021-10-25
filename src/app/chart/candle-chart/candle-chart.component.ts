@@ -130,5 +130,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
 
     } 
 
+
+
 }
 

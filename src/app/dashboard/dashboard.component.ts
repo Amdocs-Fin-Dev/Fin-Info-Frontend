@@ -31,7 +31,8 @@ export class DashboardComponent implements OnInit {
   values_low : Array<any> = [];
   values_close: Array<any> = [];
   values_open : Array<any> = [];
-
+  objeto_window_referencia: any;
+  configuracion_ventana = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
   ngOnInit(): void {
     // this.getPorfolio();
     //creamos de Key para los valores de autenticacion
@@ -213,6 +214,16 @@ export class DashboardComponent implements OnInit {
     // this.getPortfolioData();
   } 
 
+  invest():void{
+
+  }
+
+//crear la ruta para la ventana que sera el nuevo componente y asi 
+abrir(ticker:string) {
+  // this.objeto_window_referencia = window.open("http://www.cnn.com/", "Pagina_CNN", this.configuracion_ventana);
+  console.log("AAA");
+  alert("The ticker which you want to invest is " + ticker);
+}
 
 
 }

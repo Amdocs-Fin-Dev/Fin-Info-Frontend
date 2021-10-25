@@ -1,3 +1,5 @@
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+
 ngb-carousel {
     max-width: 700px;
     margin: 50px auto;

@@ -30,7 +30,10 @@ placeholder="Search Ticket..."
     <tbody>
       <tr *ngFor= "let item of Keys; index as i">
         <!-- <td>{{Keys[i]}}</td> -->
-        <td>{{ values_ticker[i] }}</td>
+        <td>
+          <button type="button" class="btn btn-light mr-1 btn-sm" (click)="abrir( values_ticker[i] )">
+            {{ values_ticker[i] }}</button>
+        </td>
         <td>{{ values_open[i] }}</td>        
         <td>{{ values_high[i] }}</td>        
         <td>{{ values_low[i] }}</td>        
@@ -50,6 +53,40 @@ placeholder="Search Ticket..."
       </tr>  -->
     </tbody>
 </table>
+
+
+<!-- <div class="container">
+<br>
+
+<a href="#invest" class="btn btn-primary btn-lg" data-toggle="modal">Button</a>
+
+</div>
+
+<div class="modal fade" id="invest">asassa</div> -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 <!-- <div class="container-fluid">
 
     <div class="custom-card">

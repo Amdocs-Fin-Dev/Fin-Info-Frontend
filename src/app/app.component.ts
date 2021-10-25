@@ -1,16 +1,19 @@
-import { Component,ElementRef,OnInit, ViewChild } from '@angular/core';
+import { Component,ElementRef,OnInit, ViewChild, AfterViewInit  } from '@angular/core';
 import { ChartType } from 'angular-google-charts';
 // For MDB Angular Free
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 import { SharedService } from './shared.service';
 import { Router } from '@angular/router';
+declare var $: any;
 
+// declare var $: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+ 
   public userDetails:any;
   // title = 'Angular 12';
  //agregue manualmente el constructor y el ngOnInit no se porque
@@ -88,7 +91,12 @@ export class AppComponent {
     window.location.reload();
     this.txtBuscar.nativeElement.value= '';
   }
-
+  ngAfterViewInit() {
+    console.log("nada");
+    // $(document).ready(function(){
+    //   alert("Hola Jquery");
+    //  });
+  }
 
 }
 
