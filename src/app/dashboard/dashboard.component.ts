@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angula
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { Ticker } from '../interface/ticker.interface';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +12,11 @@ import { Ticker } from '../interface/ticker.interface';
 })
 export class DashboardComponent implements OnInit {
   public userDetails:any;
-
-  constructor(private router: Router, private service:SharedService) {
+  closeResult = '';
+  constructor(private router: Router, private service:SharedService, private modalService: NgbModal) {
   }
+
+  
   UserList: any = [];
   UserPortfolio: any = []; 
   Portfolio: any = [];
@@ -225,5 +228,23 @@ abrir(ticker:string) {
   alert("The ticker which you want to invest is " + ticker);
 }
 
+
+open(content: any) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === ModalDismissReasons.ESC) {
+    return 'by pressing ESC';
+  } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    return 'by clicking on a backdrop';
+  } else {
+    return `with: ${reason}`;
+  }
+}
 
 }

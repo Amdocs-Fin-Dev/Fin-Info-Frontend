@@ -54,39 +54,34 @@ placeholder="Search Ticket..."
     </tbody>
 </table>
 
-
-<!-- <div class="container">
-<br>
-
-<a href="#invest" class="btn btn-primary btn-lg" data-toggle="modal">Button</a>
-
-</div>
-
-<div class="modal fade" id="invest">asassa</div> -->
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Make a Transaction for </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div> -->
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="actions">Amount of Actions</label>
+        <div class="input-group">
+          <input id="actions" class="form-control" placeholder="0" name="dp">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Invest!</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo :3</button>
+
+<hr>
+
+<pre>{{ closeResult }}</pre>
+
 <!-- <div class="container-fluid">
 
     <div class="custom-card">
@@ -108,6 +103,9 @@ placeholder="Search Ticket..."
     </div>
   
   </div> -->
+
+
+
 
 
   

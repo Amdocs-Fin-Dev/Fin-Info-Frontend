@@ -103,6 +103,9 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   title = localStorage.getItem('ticker_id');
   id:  any = localStorage.getItem('ticker_id');
   period:string = "1y";
+  period2:string = "1d";
+  intervaltimer: any
+  contador = 1;
 
   ngAfterViewInit(): void {
     console.log("ngAfterView");
@@ -113,19 +116,44 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
   this.refreshChartList('1d');
 
+  this.intervaltimer = setInterval(() => {
+  
+    this.refreshChartList('15m');
+
+    this.contador++
+
+    console.log(this.contador + "50000 holi")
+
+}, 900000);
   }
 
   refreshChartList(interval:string){
     //antes con this.id como parametro
-    this.service.getDepListTest(this.id, interval, this.period).subscribe(data=>{
-      this.ChartList = data;
-      this.ChartList = JSON.parse(this.ChartList);
-      google.charts.load('current', {packages: ['corechart', 'line']});
-      google.charts.setOnLoadCallback(this.drawChart);
-    }); 
+    if(interval == '15m'){
+      this.service.getDepListTest(this.id, interval, this.period2).subscribe(data=>{
+        this.ChartList = data;
+        this.ChartList = JSON.parse(this.ChartList);
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(this.drawChart);
+      }); 
+    }
+    else{
+      this.service.getDepListTest(this.id, interval, this.period).subscribe(data=>{
+        this.ChartList = data;
+        this.ChartList = JSON.parse(this.ChartList);
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(this.drawChart);
+      }); 
+    }
+
   }
 /*   ngAfterViewInit(): void {
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(this.drawChart);
   } */
 }
+
+
+
+
+  
