@@ -3,7 +3,9 @@ import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angula
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { Ticker } from '../interface/ticker.interface';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +18,12 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private service:SharedService, private modalService: NgbModal) {
   }
 
-  
+  // this variables maybe will be in another component
+  tempInvest:any = 0;
+  // Ticker donde se esta haciendo la inversion
+  investTicker:string = '';
+  dateInvest:any = '';
+
   UserList: any = [];
   UserPortfolio: any = []; 
   Portfolio: any = [];
@@ -54,6 +61,7 @@ export class DashboardComponent implements OnInit {
 
     this.getPorfolio();
     // this.getPortfolioData();
+    
   }
 
   signOut(): void {
@@ -186,8 +194,6 @@ export class DashboardComponent implements OnInit {
         //   this.values_close.push(valor);     
         // }
        
-        
-        
         // var valor: Array<any> = arr;
         this.values_ticker.push(temp);
         // console.log('Esto',this.values_ticker);
@@ -229,10 +235,26 @@ abrir(ticker:string) {
 }
 
 
-open(content: any) {
+
+@ViewChild('investValue') investValue!:ElementRef<HTMLInputElement>;
+
+makeInvest():void{
+console.log("Lalala",this.investValue.nativeElement.value)
+const valor = this.investValue.nativeElement.value;
+alert("You invest in " + this.investTicker + " " + valor + " . Thank you :3");
+if (valor.trim().length === 0 ){
+  return;
+}else{
+  
+}
+
+}
+open(content: any, ticker:string) {
+  this.investTicker = ticker;
   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
     this.closeResult = `Closed with: ${result}`;
   }, (reason) => {
+    
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
 }
@@ -245,6 +267,49 @@ private getDismissReason(reason: any): string {
   } else {
     return `with: ${reason}`;
   }
+}
+@ViewChild('addMountForm') addMountForm! : NgForm;
+
+onSubmit(form: NgForm){
+  console.log("adding form values ");
+  console.log(form.value);
+  console.log(this.tempInvest);
+  console.log("Esto es lo que me manda",this.dateInvest.day);
+  const formatDate = this.dateInvest.year + '-' + this.dateInvest.month + '-' +this.dateInvest.day;
+  console.log("Fecha :3",formatDate);
+  this.addInvest(this.ActualEmail, this.investTicker, this.tempInvest, formatDate);
+}
+
+addInvest(email:string, tickerTrade: string, amount:any, dateInvest:any):void{
+var email = email;
+var tickerTrade = tickerTrade;
+var amount = amount;
+var dateInvest= dateInvest;
+
+const result = {email, tickerTrade, amount, dateInvest};
+this.service.addInvest(result).subscribe(res=>{
+  const something = res;
+  console.log('Investing made: ', something);
+  console.log("date ", this.dateInvest);
+});
+
+this.getInvestList();
+}
+
+getInvestList(){
+  let amount: any[] = [];
+  let date: any[] = [];
+  this.service.getInvests(this.ActualEmail).subscribe(data=>{
+ 
+  const temp = data;
+  for(var i = 0; i < temp.length; i++){
+    // console.log( temp[i].amount );
+    amount.push(temp[i].amount);
+    date.push(temp[i].dateInvest);
+  }
+  });
+
+  console.log("Otras inversiones",amount);
 }
 
 }

@@ -18,6 +18,7 @@ readonly APIUrl = "http://127.0.0.1:8000/";
   tickerid = localStorage.getItem('ticker_id')
   comodities: any = [];
   news: any = [];
+  invests: any = [];
 
   constructor(private http: HttpClient) { }
   
@@ -96,5 +97,15 @@ readonly APIUrl = "http://127.0.0.1:8000/";
     this.news = this.http.get<any[]>(this.APIUrl + 'news/' );
     return this.comodities = this.http.get<any[]>(this.APIUrl + 'news/' );
   }
+
+  addInvest(val:any){
+    return this.http.post<any>(this.APIUrl + 'account/invest/',val);
+  }
+
+  getInvests(email: string):Observable<any[]>{
+    this.invests = this.http.get<any[]>(this.APIUrl + 'account/invest/' + email);
+    return this.invests = this.http.get<any[]>(this.APIUrl + 'account/invest/' + email);
+  }
+
 
 }

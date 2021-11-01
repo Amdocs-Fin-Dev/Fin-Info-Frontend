@@ -114,22 +114,22 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   ChartList: any = [];
 
   ngOnInit(): void {
-  this.refreshChartList('1d');
+  // this.refreshChartList('1d');
 
   this.intervaltimer = setInterval(() => {
   
-    this.refreshChartList('15m');
+    this.refreshChartList('2m');
 
     this.contador++
 
     console.log(this.contador + "50000 holi")
 
-}, 900000);
+}, 2000);
   }
 
   refreshChartList(interval:string){
     //antes con this.id como parametro
-    if(interval == '15m'){
+    if(interval == '2m'){
       this.service.getDepListTest(this.id, interval, this.period2).subscribe(data=>{
         this.ChartList = data;
         this.ChartList = JSON.parse(this.ChartList);
