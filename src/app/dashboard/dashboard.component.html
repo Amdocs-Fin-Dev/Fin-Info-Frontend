@@ -6,6 +6,9 @@
     <!-- </div> -->
   <!-- </div> -->
 <!-- </div> -->
+
+<div #investChart></div>
+
 <h5>Add elements to your Portfolio:</h5>
 <input type="text" 
 class="form-control" 
@@ -31,7 +34,7 @@ placeholder="Search Ticket..."
       <tr *ngFor= "let item of Keys; index as i">
         <!-- <td>{{Keys[i]}}</td> -->
         <td>
-          <button type="button" class="btn btn-light mr-1 btn-sm" (click)="open(content, values_ticker[i])">
+          <button type="button" class="btn btn-light mr-1 btn-sm" (mouseover)="getDataList(values_ticker[i])" (click)="open(content, values_ticker[i])">
             {{ values_ticker[i] }}</button>
         </td>
         <td>{{ values_open[i] }}</td>        
@@ -95,30 +98,6 @@ placeholder="Search Ticket..."
 <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Invest!</button> -->
 <input type="submit" class="submit-btn" value="Invest!" (click)="makeInvest()" />
 </div>
-
-
-<!-- <div class="container-fluid">
-
-    <div class="custom-card">
-  
-      <div class="text-center mb-4">
-        <img [src]="userDetails?.photoUrl" alt="user-avatar" class="user-avatar"/>
-      </div>
-  
-      <p class="mb-2">
-        <span class="font-weight-bold">Name: </span>{{userDetails?.name}}
-      </p>
-  
-      <p class="mb-2">
-        <span class="font-weight-bold">Email: </span>{{userDetails?.email}}
-      </p>
-  
-      <button class="btn btn-block btn-danger mt-4" (click)="signOut()">Sign out</button>
-  
-    </div>
-  
-  </div> -->
-
 
 
 

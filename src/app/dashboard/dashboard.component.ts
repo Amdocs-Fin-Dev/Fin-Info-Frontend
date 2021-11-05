@@ -5,8 +5,9 @@ import { SharedService } from '../shared.service';
 import { Ticker } from '../interface/ticker.interface';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
+import { isEmptyObject } from 'jquery';
 
-
+declare var google: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -23,6 +24,8 @@ export class DashboardComponent implements OnInit {
   // Ticker donde se esta haciendo la inversion
   investTicker:string = '';
   dateInvest:any = '';
+  dataMeruko: any = [];
+  datosChart: any = [];
 
   UserList: any = [];
   UserPortfolio: any = []; 
@@ -61,7 +64,8 @@ export class DashboardComponent implements OnInit {
 
     this.getPorfolio();
     // this.getPortfolioData();
-    
+    // a ver como jala
+    this.getInvestList()
   }
 
   signOut(): void {
@@ -296,20 +300,108 @@ this.service.addInvest(result).subscribe(res=>{
 this.getInvestList();
 }
 
+
+getDataList(ticker:string){
+  this.service.getInvests(this.ActualEmail, ticker).subscribe((data:any)=>{
+    this.dataMeruko = JSON.parse(data);
+    console.log(this.dataMeruko);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart);
+  });
+}
 getInvestList(){
   let amount: any[] = [];
   let date: any[] = [];
-  this.service.getInvests(this.ActualEmail).subscribe(data=>{
- 
-  const temp = data;
-  for(var i = 0; i < temp.length; i++){
-    // console.log( temp[i].amount );
-    amount.push(temp[i].amount);
-    date.push(temp[i].dateInvest);
-  }
+  this.service.getInvests(this.ActualEmail, this.investTicker).subscribe(data=>{
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart);
+  
   });
+  
 
   console.log("Otras inversiones",amount);
+  console.log("Otras inversiones",date);
 }
+
+//Cambiarlo a otro componente
+
+@ViewChild('investChart') investChart!: ElementRef;
+drawChart = (list: any)=>{
+  list = this.dataMeruko;
+  // if(isEmptyObject(list)){
+  //   this.datosChart = this.gold;
+  // }
+  console.log("Mis datos son: ", list);
+  const data = new google.visualization.DataTable();
+  let dates: Array<Date> = [];
+  let cocoa = [];
+  const name = this.investTicker;
+
+  data.addColumn('datetime', 'Date');
+  // String de nombre
+  data.addColumn('number', 'Profits');
+
+  var array: Array<string> = Object.values(this.dataMeruko.Date);
+
+  for (i = 0; i < array.length; i++) {
+    //Convertir los datos del objeto en enteros (es tipo object no string)
+    const intValor = parseInt(array[i]);
+    //console.log("Prueba=", intValor);
+
+    //pasamos las fechas con la funcion date para que los valores en enteros puedan ser Datetime
+    var new_date = new Date(intValor);
+    // console.log(new_date);
+
+    //recoger todas las fechas formateadas a Datetime.
+    dates.push(new_date);
+  }
+  //end for 
+  const index = Object.keys(this.dataMeruko).length;
+  const index2 = dates.length;
+  console.log("INDEX",index);
+  // console.log("Indices :3", index);
+  // console.log("Indices valores", Object.keys(this.datos.Date));
+  cocoa = this.datosChart;
+  // console.log(cocoa);
+  console.log("Fechas",dates);
+  console.log("Valores",cocoa);
+  for(var i = 0; i < index2; i++){
+    // console.log("valoressss", cocoa[i]);
+    // if(cocoa[i] == null){
+    //   cocoa[i] = cocoa[i-1];
+    // }
+    // if(cocoa[i] > 0){
+      data.addRows([[dates[i],this.dataMeruko.final[i]]]);
+    // }
+  }
+
+  const options = {
+    legend: 'series',
+    hAxis: {
+      // title: 'Date'
+
+    },
+    vAxis: {
+      // title: 'Average'
+    },
+    chartArea: {'left':'0','top':'20','width': '100%', 'height': '100%'},
+    // backgro    undColor: '#eef2eb',
+
+    series: {
+      0: { color: '#9a2b6c' }
+    },
+    explorer: { 
+      //actions: ['dragToZoom', 'rightClickToReset'],
+      axis: 'horizontal',
+      maxZoomIn: 10,
+      maxZoomOut: 7
+      }
+  };
+
+  const chart = new google.visualization.AreaChart(this.investChart.nativeElement);
+  chart.draw(data,options);
+
+}
+
 
 }

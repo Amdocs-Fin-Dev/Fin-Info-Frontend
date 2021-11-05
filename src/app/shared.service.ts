@@ -102,9 +102,9 @@ readonly APIUrl = "http://127.0.0.1:8000/";
     return this.http.post<any>(this.APIUrl + 'account/invest/',val);
   }
 
-  getInvests(email: string):Observable<any[]>{
-    this.invests = this.http.get<any[]>(this.APIUrl + 'account/invest/' + email);
-    return this.invests = this.http.get<any[]>(this.APIUrl + 'account/invest/' + email);
+  getInvests(email: string, ticker:string):Observable<any[]>{
+    this.invests = this.http.get<any[]>(this.APIUrl + 'account/invest/' + email + '/' + ticker + '/');
+    return this.invests = this.http.get<any[]>(this.APIUrl + 'account/invest/' + email + '/' + ticker + '/');
   }
 
 
