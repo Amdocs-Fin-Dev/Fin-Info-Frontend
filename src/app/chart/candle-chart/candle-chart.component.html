@@ -2,6 +2,15 @@
 <app-carousel></app-carousel>
 <h2 class="text-muted center-title">{{title}} Overview </h2>
 
+
+<button routerLink="/line" 
+            class="m-1 btn btn-light btn-outline-warning">
+            <img [src]="'assets/images/graph.png'" alt="line" height="22" ></button>
+
+<button routerLink="/candle" 
+        class="m-1 btn btn-light btn-outline-warning">
+        <img [src]="'assets/images/candlestick.svg'" alt="candle" height="22" ></button>
+
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1d')">1D</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1wk')">1W</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1mo')">1M</button>
@@ -11,38 +20,40 @@
 </div> -->
 <div>
     
-    <div style="width: 80%; padding:19px; height: 100%; float:left;">
-        <div #candleChart ></div>
-        <div style="padding: 10px; margin-top: 25px; ">
+    <!-- <div style="width: 80%; padding:19px; height: 100%; float:left;"> -->
+        <!-- <div #candleChart ></div> -->
+        <!-- <div style="padding: 10px; margin-top: 25px; "> -->
+            <!-- <app-analysis></app-analysis> -->
+           
+        <!-- </div> -->
+    </div>
+    <div class="row">
+        <div #candleChart class="col-md-8"></div>
+        <!-- <div class="col-sm-6">
             <app-analysis></app-analysis>
-
+        </div> -->
+        <div class="col-sm-4">
+            <app-comodities></app-comodities>
         </div>
     </div>
 
-    <div style="width:19%; height: 300px; float:left; ">
-        <!-- "background-color: darkcyan; -->
-        <app-comodities></app-comodities>
-
-    </div>
-    <!-- <div style="clear: both;">
-
+    <!-- <div class="row">
+        <div class="col-sm-4">
+            <app-analysis></app-analysis>
+        </div>
+        
     </div> -->
     
-    <!-- <div style="background-color: rgb(77, 90, 90); width: 19%; height: 300px; "></div>
-    <div style="background-color: rgb(139, 0, 0); width: 19%; height: 300px; "></div> -->
-    <!-- <div style="width: 80%; height: 100%; float:left; padding: 2px;">
-        <app-analysis></app-analysis>
-    </div> -->
-</div>
+<!-- </div> -->
 
 
 
 <br>
 <br>
 
-<div class="container align-right">
+<!-- <div class="container align-right">
     
-</div>
+</div> -->
 <!-- <div style="clear: both;">
 
 </div> -->

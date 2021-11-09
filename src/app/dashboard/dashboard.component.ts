@@ -388,7 +388,7 @@ drawChart = (list: any)=>{
     // backgro    undColor: '#eef2eb',
 
     series: {
-      0: { color: '#9a2b6c' }
+      0: { color: '#1b78d4' }
     },
     explorer: { 
       //actions: ['dragToZoom', 'rightClickToReset'],

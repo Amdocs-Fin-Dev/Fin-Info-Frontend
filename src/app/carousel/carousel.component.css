@@ -6,10 +6,12 @@
 ngb-carousel img {
     /* width: 425px; */
     /* width: 750px; */
-    width: 150%;
-    height: 115px;
+    width: 50%;
+    height: 50%;
+    /* width: 150%;
+    height: 115px; */
     /* outline: none; */
-    /* float: center; */
+    float: center;
 }
 
 /* ngb-carousel img {
@@ -25,8 +27,11 @@ ngb-carousel {
 } */
 
 ngb-carousel {
-    width:  150%;
+    /* width:  150%;
     height: 120px;
+    margin: 0px; */
+    width:  100%;
+    height: 100%;
     margin: 0px;
     background-color: black;
     /* float: center; */

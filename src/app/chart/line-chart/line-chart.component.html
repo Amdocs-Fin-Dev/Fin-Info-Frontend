@@ -2,7 +2,15 @@
 
 <!-- <button routerLink="w" class="m-1 btn-sm btn-light btn-outline-warning">W</button>
 <button routerLink="m" class="m-1 btn-sm btn-light btn-outline-warning">M</button> -->
+<app-carousel></app-carousel>
 <h2 class="text-muted center-title">{{title}} Overview </h2>
+<button routerLink="/line" 
+            class="m-1 btn btn-light btn-outline-warning">
+            <img [src]="'assets/images/graph.png'" alt="line" height="22" ></button>
+
+<button routerLink="/candle" 
+        class="m-1 btn btn-light btn-outline-warning">
+        <img [src]="'assets/images/candlestick.svg'" alt="candle" height="22" ></button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('2m')">15m</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1d')">1D</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1wk')">1W</button>

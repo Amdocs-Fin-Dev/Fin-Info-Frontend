@@ -28,6 +28,7 @@ import { ChartsComponent } from './comodities/charts/charts.component';
 import { CarouselComponent } from './carousel/carousel.component';
 // import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // import { OwlModule } from 'ngx-owl-carousel';
 // import { OwlModule } from 'ngx-owl-carousel';
 

@@ -1,7 +1,7 @@
 /* @import '~bootstrap/dist/css/bootstrap.min.css'; */
-@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+/* @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css'); */
 
-.modal-backdrop.fade
+/* .modal-backdrop.fade
 {
   opacity: 0.5;
 }
@@ -55,4 +55,8 @@ ngb-carousel {
 .carousel-indicators{
     z-index: 20;
 }
-  
+   */
+
+   /* body {
+    background-color: #f4f3ef;
+  } */

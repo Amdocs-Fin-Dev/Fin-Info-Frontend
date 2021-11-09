@@ -1,9 +1,11 @@
 <!-- <div  #some class="align-center" style="float:right; width: 425px; height: 200px;"> -->
-  <ngb-carousel style="margin-left: 20%;" >
-    <ng-template  class="carousel slide" ngbSlide *ngFor= "let item of noticias; index as i">
+  <!-- style="margin-left: 25%;" -->
+  <ngb-carousel >
+    <ng-template style="text-align: center;" class="carousel slide" ngbSlide *ngFor= "let item of noticias; index as i">
       <!-- estaba el margen en 7.5% -->
-        <div class="picsum-img-wrapper" style="margin-left: 25%;">
-          <img src= "{{noticias[i].urlToImage}}" >
+      <!-- style="margin-left: 25%;" -->
+        <div class="picsum-img-wrapper" style="text-align: center;" >
+          <img width="100px" height="50px" src= "{{noticias[i].urlToImage}}" >
           <div class="carousel-caption">
             <h3>{{ noticias[i].title }}</h3>
             <p>{{ noticias[i].description}}</p> 
