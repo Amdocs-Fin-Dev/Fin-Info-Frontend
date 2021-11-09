@@ -14,7 +14,8 @@
                 </tr>
                 <tr> 
                   <td data-bs-toggle="tooltip" data-bs-placement="top" 
-                  title="GC" (mouseover)="drawChart(gold,'Gold')" style="cursor: pointer"> Gold </td>  
+                  title="GC" (mouseover)="drawChart(gold,'Gold')" style="cursor: pointer"> <img src ="./assets\images\dollar-coin.png"> Gold </td>  
+                  
                   <td>{{gold[last]}}</td>
                   <td>{{gold[last] - gold[last-1] | number}}</td>
                   <td>{{((gold[last] - gold[last-1]) * 100)/gold[last] | number}} &#37;</td>
@@ -22,29 +23,28 @@
                 <tr>
                     <!-- #Gold, Natural Gas, Silver, Crude Oil, Cocoa v  -->
                     <td data-bs-toggle="tooltip" data-bs-placement="top" 
-                    title="NG" (mouseover)="drawChart(naturalGas,'Natural Gas')" style="cursor: pointer"
-                    > Natural Gas </td>
+                    title="NG" (mouseover)="drawChart(naturalGas,'Natural Gas')" style="cursor: pointer"><img src ="./assets\images\natural-gas.png"> Natural Gas </td>
                     <td>{{naturalGas[last] - naturalGas[last-1] | number}}</td>
                     <td>{{naturalGas[last]}}</td>
                     <td>{{((naturalGas[last] - naturalGas[last-1]) * 100)/silver[last] | number}} &#37; </td>
                 </tr>
                 <tr>
                     <td data-bs-toggle="tooltip" data-bs-placement="top" 
-                    title="SI" (mouseover)="drawChart(silver,'Silver')" style="cursor: pointer"> Silver </td>
+                    title="SI" (mouseover)="drawChart(silver,'Silver')" style="cursor: pointer"> <img src ="./assets\images\silver-medal.png"> Silver </td>
                     <td>{{silver[last]}}</td>
                     <td>{{silver[last] - silver[last-1] | number}}</td>
                     <td>{{((silver[last] - silver[last-1]) * 100)/silver[last] | number}} &#37;</td>
                 </tr>
                 <tr>
                     <td data-bs-toggle="tooltip" data-bs-placement="top" 
-                    title= "CL" (mouseover)="drawChart(crudeOil,'Crude Oil')" style="cursor: pointer">Crude Oil</td>
+                    title= "CL" (mouseover)="drawChart(crudeOil,'Crude Oil')" style="cursor: pointer"><img src ="./assets\images\oil-barrel.png">Crude Oil</td>
                     <td>{{crudeOil[last]}}</td>
                     <td>{{crudeOil[last] - crudeOil[last-1] | number}}</td>
                     <td>{{((crudeOil[last] - crudeOil[last-1]) * 100)/crudeOil[last] | number}} &#37;</td>
                 </tr>
                 <tr>
                     <td data-bs-toggle="tooltip" data-bs-placement="top" 
-                    title= "CC" (mouseover)="drawChart(cocoa,'Cocoa')" style="cursor: pointer">Cocoa</td>
+                    title= "CC" (mouseover)="drawChart(cocoa,'Cocoa')" style="cursor: pointer"><img src ="./assets\images\chocolate.png">Cocoa</td>
                     <td>{{cocoa[last]}}</td>
                     <td>{{cocoa[last] - cocoa[last-1] | number}}</td>
                     <td>{{((cocoa[last] - cocoa[last-1]) * 100)/cocoa[last] | number}} &#37;</td>
