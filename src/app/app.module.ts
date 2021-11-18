@@ -19,14 +19,14 @@ import { AnalysisComponent } from './analysis/analysis.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CarouselModule, MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 import { ChartAnalysisComponent } from './analysis/chart-analysis/chart-analysis.component';
 import { ComoditiesComponent } from './comodities/comodities.component';
 import { ChartsComponent } from './comodities/charts/charts.component';
 import { CarouselComponent } from './carousel/carousel.component';
-// import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import { OwlModule } from 'ngx-owl-carousel';

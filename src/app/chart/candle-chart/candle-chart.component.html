@@ -1,6 +1,16 @@
 
-<app-carousel></app-carousel>
-<h2 class="text-muted center-title">{{title}} Overview </h2>
+
+
+<div class="row">
+    <div class="md-2">
+        <h2 class="text-muted center-title ">{{title}} Overview </h2>
+    </div>
+    
+<div class="md-4">
+    <app-favorite-button></app-favorite-button>
+</div>
+   
+</div>
 
 
 <button routerLink="/line" 
@@ -14,11 +24,10 @@
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1d')">1D</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1wk')">1W</button>
 <button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1mo')">1M</button>
-
 <!-- <div class="align-right">
     <app-favorite-button></app-favorite-button>
 </div> -->
-<div>
+<!-- <div> -->
     
     <!-- <div style="width: 80%; padding:19px; height: 100%; float:left;"> -->
         <!-- <div #candleChart ></div> -->
@@ -26,7 +35,7 @@
             <!-- <app-analysis></app-analysis> -->
            
         <!-- </div> -->
-    </div>
+    <!-- </div> -->
     <div class="row">
         <div #candleChart class="col-md-8"></div>
         <!-- <div class="col-sm-6">
@@ -67,3 +76,4 @@
 [height]="height"
 [columns]="columns">
  </google-chart>  -->
+ <app-carousel></app-carousel>

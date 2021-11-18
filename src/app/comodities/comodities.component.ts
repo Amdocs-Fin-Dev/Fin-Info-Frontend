@@ -4,6 +4,7 @@ import { isEmptyObject } from 'jquery';
 import { SharedService } from '../shared.service';
 
 declare var google: any;
+
 @Component({
   selector: 'app-comodities',
   templateUrl: './comodities.component.html',
@@ -12,7 +13,9 @@ declare var google: any;
 export class ComoditiesComponent implements OnInit, AfterViewInit {
 
   constructor(private service:SharedService) { }
-
+  private greenIndex: number = -1;
+  private redIndex: number = 1;
+  
   @ViewChild('comodityChart') comodityChart!: ElementRef;
   drawChart = (list: any, nameL:string)=>{
     this.datosChart = list;
@@ -99,6 +102,7 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
   last: number = 0;
   ngOnInit(){
     this.comodity();
+    // this.colores();
   }
 
   comodity():void{
@@ -147,8 +151,31 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
   test(){
     console.log("mouse over is working :33");
   }
+  @ViewChild('dataCell') dataCell!: ElementRef;
+  colores(){
+
+    // const valor = document.getElementById('dataCell')!.innerText.value;
+    var tr = document.getElementsByTagName("tr")[1];
+    var td = tr.getElementsByTagName("td")[3];
+    var td_text = td.innerHTML;
+    console.log("Celda", td_text);
+    document.getElementById('dataCell')!.style.color ="#dc3545";
+    // var col = this.dataCell.nativeElement;
+    // this.dataCell.nativeElement.innerHTML.style.color= "#dc3545";
+    // var col= document.getElementById("demo").innerHTML;
+    // col.style.color="#dc3545";
+
+  }
 
   ngAfterViewInit(): void {
+    // this.colores();
+    // // console.log(this.dataCell);
+    // var tr = document.getElementsByTagName("tr")[1];
+    // var td = tr.getElementsByTagName("td")[3];
+    // var td_text = td.innerHTML;
+    // console.log("Celda", td_text);
+    document.getElementById('dataCell')!.style.color ="#dc3545";
+    // this.dataCell.nativeElement.style.color = "#dc3545";
     console.log("NgAfterViewInit");
   }
 }

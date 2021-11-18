@@ -6,6 +6,7 @@ import { Ticker } from '../interface/ticker.interface';
 import { NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { isEmptyObject } from 'jquery';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 declare var google: any;
 @Component({
@@ -46,7 +47,10 @@ export class DashboardComponent implements OnInit {
   values_open : Array<any> = [];
   objeto_window_referencia: any;
   configuracion_ventana = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+
+ 
   ngOnInit(): void {
+    
     // this.getPorfolio();
     //creamos de Key para los valores de autenticacion
     const storage = localStorage.getItem('google_auth');

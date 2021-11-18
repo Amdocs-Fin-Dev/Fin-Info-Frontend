@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SlidesOutputData, OwlOptions } from 'ngx-owl-carousel-o';
 import { NgbCarousel, NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +21,67 @@ export class CarouselComponent implements OnInit {
     // _config.animation= true;
   }
 
+
   // constructor(private service:SharedService){}
+
+  cards = [
+    {
+      title: 'Card Title 1',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 2',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 3',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 4',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 5',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 6',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 7',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 8',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+    {
+      title: 'Card Title 9',
+      description: 'Some quick example text to build on the card title and make up the bulk of the card content',
+      buttonText: 'Button',
+      img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg'
+    },
+  ];
+  slides: any = [[]];
+
 
   homeSlider= {items:2, dots: true, nav: true}
 
@@ -51,34 +111,14 @@ export class CarouselComponent implements OnInit {
       this.togglePaused();
     }
   }
-  
+  Raww : any = [];
   noticias : any = [];
   images: any = [];
   test: string = ''; 
   
-
   ngOnInit(): void {
     this.news();
-    $('.owl-carousel').owlCarousel({
-      loop:true,
-      margin:10,
-      responsiveClass:true,
-      responsive:{
-          0:{
-              items:1,
-              nav:true
-          },
-          600:{
-              items:3,
-              nav:false
-          },
-          1000:{
-              items:5,
-              nav:true,
-              loop:false
-          }
-      }
-    })
+    // this.slide2();
   }
   activeSlides: SlidesOutputData | undefined;
 
@@ -87,18 +127,44 @@ export class CarouselComponent implements OnInit {
     console.log(this.activeSlides);
   }
   news(){
+    let R:any = [];
     this.service.getTopNews().subscribe((data:any)=>{
       this.noticias = data;
-      console.log(this.noticias)
-      for(var i = 0; i < this.noticias.length; i++){
-        // console.log(this.noticias[i].urlToImage);
-        this.images.push(this.noticias[i].urlToImage);
-        // console.log(typeof(this.noticias[i].urlToImage));
-      }
+      console.log("Tipo de OBJECTO",this.noticias);
+      console.log("Tipo de OBJECTO2",this.cards);
+      // for(var i = 0; i < this.noticias.length; i++){
+      //   console.log(this.noticias[i].urlToImage);
+      //   this.images.push(this.noticias[i].urlToImage);
+      //   console.log(typeof(this.noticias[i].urlToImage));
+      // }
       // this.test = this.images[2];
-      console.log("Imagenn",this.test);
+      // console.log("Imagenn",this.test);
+      for (let i = 0, len = this.noticias.length; i < len; i += 4) {
+        R.push(this.noticias.slice(i, i + 4));
+        // console.log("LALALA",this.Raww);
+      }
+      this.slides = R;
+      console.log("Quiero dormir",this.slides);
     });
+    console.log("Ya paso el metodo");
+    // this.chunk(this.noticias,4);
   }
+
+  chunk(arr: any, chunkSize: any) {
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+      // console.log("LALALA",this.Raww);
+    }
+    // console.log("Esta es la r",this.Raww);
+    // this.slides = R;
+    return R;
+  }
+
+  // slide2(){
+  //   console.log("nani????",this.noticias);
+  //   this.slides = this.chunk(this.noticias, 4);
+  // }
 
 
 }

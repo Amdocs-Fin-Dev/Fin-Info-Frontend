@@ -1,10 +1,10 @@
 <!-- <div  #some class="align-center" style="float:right; width: 425px; height: 200px;"> -->
   <!-- style="margin-left: 25%;" -->
-  <ngb-carousel >
-    <ng-template style="text-align: center;" class="carousel slide" ngbSlide *ngFor= "let item of noticias; index as i">
+  <!-- <ngb-carousel >
+    <ng-template style="text-align: center;" class="carousel slide" ngbSlide *ngFor= "let item of noticias; index as i"> -->
       <!-- estaba el margen en 7.5% -->
       <!-- style="margin-left: 25%;" -->
-        <div class="picsum-img-wrapper" style="text-align: center;" >
+        <!-- <div class="picsum-img-wrapper" style="text-align: center;" >
           <img width="100px" height="50px" src= "{{noticias[i].urlToImage}}" >
           <div class="carousel-caption">
             <h3>{{ noticias[i].title }}</h3>
@@ -12,99 +12,69 @@
           </div>
 
         </div>       
-        
-        <!-- <div class="picsum-img-wrapper">
-          <img src= "{{noticias[i].urlToImage}}">
-          </div>
-       -->
       </ng-template>
-   </ngb-carousel>
+   </ngb-carousel> -->
 
 
 
-
-    <!-- <div style= "clear:inherit"></div> -->
-      <!-- <ngb-carousel>
-        <ng-template  class="carousel slide align-right" ngbSlide *ngFor= "let item of noticias; index as i" >
-          <div class="picsum-img-wrapper" style="padding: 2.5px;" >
-            <img src= "{{noticias[i].urlToImage}}">
-            <ng-template #menor><img src="{{noticias[i].urlToImage}}"> </ng-template>
+<!-- <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                  [animation]="'slide'">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+        <div class="row">
+          <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+               *ngFor="let card of cards let cardIndex = index">
+            <mdb-card class="my-1">
+              <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h4>{{card.title}}</h4>
+                </mdb-card-title>
+                <p>{{card.description}}</p>
+                 <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a>
+              </mdb-card-body>
+            </mdb-card>
           </div>
-          <div class="carousel-caption" >
-            <h3>{{ noticias[i].title }}</h3>
-            <p>{{ noticias[i].description}}</p>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel> -->
+
+<!--     
+<mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                  [animation]="'slide'">
+      <mdb-carousel-item *ngFor="let item of Raww; let i = index">
+        <div class="row">
+          <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+               *ngFor="let card of noticias; let cardIndex = index">
+            <mdb-card class="my-1">
+              <mdb-card-img [src]="card.urlToImage" alt="Card image cap"></mdb-card-img>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h4>{{card.title}}</h4>
+                </mdb-card-title>
+              </mdb-card-body>
+            </mdb-card>
           </div>
-  
-        </ng-template>
-      </ngb-carousel> -->
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel> -->
 
-      <!-- <div style= "clear:inherit"></div> -->
-      <!-- <ngb-carousel>
-        <ng-template  class="carousel slide" ngbSlide *ngFor= "let item of noticias; index as z">
-          <div class="picsum-img-wrapper" style="padding: 2.5px;" >
-            <img src= "{{noticias[z].urlToImage}}">
-            <ng-template #menor><img src="{{noticias[i].urlToImage}}"> </ng-template>
+    <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                  [animation]="'slide'">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+        <div class="row">
+          <div class="col-sm-3" [ngClass]="{'d-none d-sm-block': cardIndex !== 0}"
+               *ngFor="let card of item; let cardIndex = index">
+            <mdb-card class="my-1">
+              <mdb-card-img [src]="card.urlToImage" alt="Card image cap" height="5600px" width="150px"></mdb-card-img>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h6>{{card.title}}</h6>
+                </mdb-card-title>
+                <!-- <p>{{card.description}}</p> -->
+                <!-- <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a> -->
+              </mdb-card-body>
+            </mdb-card>
           </div>
-          <div class="carousel-caption">
-            <h3>{{ noticias[z].title }}</h3>
-            <p>{{ noticias[z].description}}</p>
-          </div>
-        </ng-template>
-      </ngb-carousel> -->
- 
-
-
-
-<!-- 
-<div class="container">
-  
-  <owl-carousel [options]="homeSlider" [carouselClasses]="['owl-theme', 'customClassName']">
-    <div class="item">
-      <img src="https://www.latercera.com/resizer/gn4B9D5xex3ifzWXK5P_l9gUyHk=/900x600/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/GVMMUKVR2FHTTGXD54FBUT2O4U.jpg" alt="yugi">
-    </div>
-  </owl-carousel>
-
-</div> -->
-
-
-<!-- Top content -->
-<!-- <div class="top-content">
-  <div class="container-fluid">
-      <div id="carousel-example" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner row w-100 mx-auto" role="listbox">
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
-                  <img src="assets/images/card01.svg" class="img-fluid mx-auto d-block" alt="img1">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/card01.svg" class="img-fluid mx-auto d-block" alt="img2">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/card01.svg" class="img-fluid mx-auto d-block" alt="img3">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/card01.svg" class="img-fluid mx-auto d-block" alt="img4">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/jabami.jpg" class="img-fluid mx-auto d-block" alt="img5">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/jabami.jpg" class="img-fluid mx-auto d-block" alt="img6">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/jabami.jpg" class="img-fluid mx-auto d-block" alt="img7">
-              </div>
-              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                  <img src="assets/images/jabami.jpg" class="img-fluid mx-auto d-block" alt="img8">
-              </div>
-          </div>
-          <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-          </a>
-      </div>
-  </div>
-</div> -->
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
