@@ -1,29 +1,39 @@
 
+<div id="card" #card class="card" style="margin-block: 30px;width: 45rem;">
 
+    <div id="cardBody" #cardBody class="card-body">
+            <h2 class="card-title">{{title |titlecase}} Overview </h2>
+            <h6 class="card-subtitle mb-2">Volume {{ lastVolume | number}}</h6>
+            <h6 id="diff" #diff class="card-subtitle mb-2">Close: {{ lastClose | number}} |  {{ differenceClose | number}} </h6>
+    </div>
+    
+</div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="md-2">
         <h2 class="text-muted center-title ">{{title}} Overview </h2>
-    </div>
+    </div> -->
     
 <div class="md-4">
     <app-favorite-button></app-favorite-button>
 </div>
    
-</div>
+<!-- </div> -->
 
 
 <button routerLink="/line" 
-            class="m-1 btn btn-light btn-outline-warning">
+            class="m-1 btn btn-outline-warning">
             <img [src]="'assets/images/graph.png'" alt="line" height="22" ></button>
 
 <button routerLink="/candle" 
-        class="m-1 btn btn-light btn-outline-warning">
+        class="m-1 btn btn-outline-warning">
         <img [src]="'assets/images/candlestick.svg'" alt="candle" height="22" ></button>
 
-<button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1d')">1D</button>
-<button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1wk')">1W</button>
-<button class="m-1 btn btn-light btn-outline-danger" (click)="refreshChartList('1mo')">1M</button>
+<button class="m-1 btn btn-outline-danger" (click)="refreshChartList('2m')">2m</button>
+<button class="m-1 btn btn-outline-danger" (click)="refreshChartList('1d')">1D</button>
+<button class="m-1 btn btn-outline-danger" (click)="refreshChartList('1wk')">1W</button>
+<button class="m-1 btn btn-outline-danger" (click)="refreshChartList('1mo')">1M</button>
+
 <!-- <div class="align-right">
     <app-favorite-button></app-favorite-button>
 </div> -->

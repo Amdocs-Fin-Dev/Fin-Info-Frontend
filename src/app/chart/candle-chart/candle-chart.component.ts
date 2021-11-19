@@ -96,6 +96,7 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
         chart.draw(data, options);
 
   }
+ 
 
 
   constructor(private service:SharedService) { }
@@ -105,21 +106,59 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
   id: any = localStorage.getItem('ticker_id');
   interval: string = "1d"
   period:string = "1y";
+  period2:string = "1d";
+  intervaltimer: any
+  contador = 1;
+  lastVolume: number = 0;
+  lastClose: number = 0;
+  almostLastClose: number = 0;
+  differenceClose: number = 0;
+
   ngOnInit(): void {
-    this.refreshChartList('1d');
-    
+    this.refreshChartList('2m');
+    this.intervaltimer = setInterval(() => {
+  
+    this.refreshChartList('2m');
+
+    this.contador++
+
+    console.log(this.contador + "50000 holi")
+
+}, 20000);
   }
 
   refreshChartList(interval:string){
     //antes this.id como parametro
-    this.service.getDepListTest(this.id,interval, this.period).subscribe(data=>{
-      this.ChartList = data;
-      this.ChartList = JSON.parse(this.ChartList);
-      google.charts.load('current', {packages: ['corechart']});
-      google.charts.setOnLoadCallback(this.drawChart);
-    });
+    if(interval == '2m'){
+      this.service.getDepListTest(this.id,interval, this.period2).subscribe(data=>{
+        this.ChartList = data;
+        this.ChartList = JSON.parse(this.ChartList);
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(this.drawChart);
+      });
+    }else{
+      this.service.getDepListTest(this.id,interval, this.period).subscribe(data=>{
+        this.ChartList = data;
+        this.ChartList = JSON.parse(this.ChartList);
+        const nani = Object.keys(this.ChartList.Volume);
+        console.log("Mis llavesitas",nani);
+        this.lastVolume = this.ChartList.Volume[Object.keys(this.ChartList.Volume)[Object.keys(this.ChartList.Volume).length - 1]];
+        this.lastClose = this.ChartList.Close[Object.keys(this.ChartList.Close)[Object.keys(this.ChartList.Close).length - 1]];
+        this.almostLastClose = this.ChartList.Close[Object.keys(this.ChartList.Close)[Object.keys(this.ChartList.Close).length - 2]];
+        this.differenceClose = this.lastClose - this.almostLastClose;
+        if(this.lastClose > this.almostLastClose){
+          document.getElementById("diff")!.style.color = '#00ff00';
+        }
+        else{
+          document.getElementById("diff")!.style.color = '#dc3545';
+        }
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(this.drawChart);
+      });
+    }
+
     //esto se pondria en la funcion de buscar a la hora de que se agarre el id
-    this.saveLocalStorage();
+    // this.saveLocalStorage();
   }
 
   saveLocalStorage(){
@@ -127,7 +166,8 @@ export class CandleChartComponent implements OnInit, AfterViewInit {
   }
 
      ngAfterViewInit(): void {
-
+      // google.charts.load('current', {packages: ['corechart']});
+      // google.charts.setOnLoadCallback(this.drawChart);
     } 
 
 

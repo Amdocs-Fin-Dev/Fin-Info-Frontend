@@ -106,25 +106,26 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   period2:string = "1d";
   intervaltimer: any
   contador = 1;
+  lastVolume: number = 0;
+  lastClose: number = 0;
+  almostLastClose: number = 0;
+  differenceClose: number = 0;
 
-  ngAfterViewInit(): void {
-    console.log("ngAfterView");
-  }
 
   ChartList: any = [];
 
   ngOnInit(): void {
-  // this.refreshChartList('1d');
+  this.refreshChartList('1d');
 
   this.intervaltimer = setInterval(() => {
   
     this.refreshChartList('2m');
 
-    this.contador++
+    this.contador++;
 
-    console.log(this.contador + "50000 holi")
+    console.log(this.contador + "50000 holi");
 
-}, 2000);
+}, 20000);
   }
 
   refreshChartList(interval:string){
@@ -141,6 +142,20 @@ export class LineChartComponent implements OnInit, AfterViewInit {
       this.service.getDepListTest(this.id, interval, this.period).subscribe(data=>{
         this.ChartList = data;
         this.ChartList = JSON.parse(this.ChartList);
+        const nani = Object.keys(this.ChartList.Volume);
+        console.log("Mis llavesitas",nani);
+        this.lastVolume = this.ChartList.Volume[Object.keys(this.ChartList.Volume)[Object.keys(this.ChartList.Volume).length - 1]];
+        this.lastClose = this.ChartList.Close[Object.keys(this.ChartList.Close)[Object.keys(this.ChartList.Close).length - 1]];
+        this.almostLastClose = this.ChartList.Close[Object.keys(this.ChartList.Close)[Object.keys(this.ChartList.Close).length - 2]];
+        this.differenceClose = this.lastClose - this.almostLastClose;
+        if(this.lastClose > this.almostLastClose){
+          document.getElementById("diff")!.style.color = '#00ff00';
+          document.getElementById("diff")!.style.borderWidth = '10px';
+        }
+        else{
+          document.getElementById("diff")!.style.color = '#dc3545';
+        }
+        // console.log("Ultimo volumen",final);
         google.charts.load('current', {packages: ['corechart', 'line']});
         google.charts.setOnLoadCallback(this.drawChart);
       }); 
@@ -151,6 +166,27 @@ export class LineChartComponent implements OnInit, AfterViewInit {
     google.charts.load('current', {packages: ['corechart', 'line']});
     google.charts.setOnLoadCallback(this.drawChart);
   } */
+
+  @ViewChild('diff', { static: true }) diff!: ElementRef;
+  ngAfterViewInit(): void {
+
+    //var X = document.getElementsByClassName("card")[0];
+    // var Z = X.getElementsByTagName("div")[1].style.color = '#00ff00';
+    // Z.getElementsByTagName("div")[0].style.color = '#00ff00';
+    console.log("ngAfterView");
+    if(this.differenceClose > 0){
+      
+      document.getElementById('diff')!.style.color = '#00ff00';
+      // document.getElementById('diff')!.innerText.concat('+');
+      // this.diff.nativeElement.style.color = '#00ff00';
+    }
+    else{
+      document.getElementById('diff')!.style.color = '#dc3545';
+    }
+    //document.getElementById("diff")!.style.color = "#00ff00";
+    document.getElementById('diff')!.innerText.toString().bold;
+    // document.getElementById("diff")!.innerText = "92n"
+  }
 }
 
 

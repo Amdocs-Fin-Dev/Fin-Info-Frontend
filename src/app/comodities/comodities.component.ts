@@ -27,6 +27,38 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
     let dates: Array<Date> = [];
     let cocoa = [];
     let name: string = nameL;
+    let color: string = '';
+
+    if(nameL == 'Gold'){
+      color = '#f5be18';
+    }
+    else if(nameL == 'Silver'){
+      color= '#bcbcbc';
+    }
+    else if(nameL == 'Natural Gas'){
+      color = '#d61f1f';
+    }
+    else if(nameL == 'Crude Oil'){
+      color = '#000000';
+    }
+    else if(nameL == 'Cocoa'){
+      color = '#744700';
+    }
+    else{
+      color = '#f5be18';
+    }
+
+    // switch(color){
+    //   case 'Gold':
+    //     color = '#f5be18';
+    //     break;
+    //   case 'Silver':
+    //     color= '#bcbcbc';
+    //     break;
+    //   default:
+    //     color = '#3fcfd4';
+    //     break;
+    // }
 
     data.addColumn('datetime', 'Date');
     data.addColumn('number', name);
@@ -78,7 +110,7 @@ export class ComoditiesComponent implements OnInit, AfterViewInit {
       // backgro    undColor: '#eef2eb',
 
       series: {
-        0: { color: '#3fcfd4' }
+        0: { color: color }
       },
       explorer: { 
         //actions: ['dragToZoom', 'rightClickToReset'],
