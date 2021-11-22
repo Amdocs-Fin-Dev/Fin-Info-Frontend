@@ -193,7 +193,7 @@ export class ChartAnalysisComponent implements OnInit, AfterViewInit {
         maxZoomOut: 7
         }
     };
-    const chart = new google.visualization.LineChart(this.lineChart.nativeElement);
+    const chart = new google.visualization.AreaChart(this.lineChart.nativeElement);
     chart.draw(data, options);
   }
 
