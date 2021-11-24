@@ -12,70 +12,100 @@
 
 
 <!-- <div #investChart></div> -->
-<h5>Add elements to your Portfolio:</h5>
+<!-- <h5>Add elements to your Portfolio:</h5>
 <input type="text" 
 class="form-control" 
 placeholder="Search Ticket..."
 (keyup.enter)= "buscar()"
 #txtBuscar>
-<br>
+<br> -->
 
 <div class="row">
   <div class="col-md-4">
     <div class="card card-chart">
       <div class="card-header" style="background-color: rgb(255, 255, 255);">
-        <h5 class="card-title">NASDAQ: </h5>
+        <h5 class="card-title">My Investings: </h5>
         <!-- <p class="card-category">Line Chart with Points</p> -->
       </div>
-      <div class="card-body">
+      <div class="card-body" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
         <!-- <div #investChart id="investChart" width="400" height="100"></div> -->
-        <div #investChart id="investChart"></div>
+        <div #investChart id="investChart" ></div>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th>Symbol</th>
-          <th>Open</th>
-          <th>High</th>
-          <th>Low</th>
-          <th>Close</th>
-          <th>Options</th>
-        </tr>
-      </thead>
-        <tbody>
-          <tr *ngFor= "let item of Keys; index as i">
-            <td>
-              <button type="button" class="btn btn-light mr-1 btn-sm" (mouseover)="getDataList(values_ticker[i])" (click)="open(content, values_ticker[i])">
-                {{ values_ticker[i] }}</button>
-            </td>
-            <td>{{ values_open[i] }}</td>        
-            <td>{{ values_high[i] }}</td>        
-            <td>{{ values_low[i] }}</td>        
-            <td>{{ values_close[i] }}</td>        
-            <td align="center">
-              <button type="button" class="btn btn-light mr-1 btn-sm" (click)="delete(values_ticker[i])">
-                <svg xmlns="http://www.w3.org/2000/svg" 
-                    width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                </svg>
-              </button>
-            </td>        
-          </tr>
-        </tbody>
-    </table>
+  <br>
+  <br>
+
+  <!-- <hr> -->
+  <div class="col-md-4">
+    <div class="card card-chart">
+      <div class="card-header" style="background-color: rgb(255, 255, 255);">
+        <h5 class="card-title">Close Market: </h5>
+        <!-- <p class="card-category">Line Chart with Points</p> -->
+      </div>
+      <div class="card-body" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
+        <div #lineChart id="lineChart" ></div>
+      </div>
+    </div>
   </div>
 
- 
+  <div class="col-md-4">
+    <div class="card card-chart">
+      <div class="card-header" style="background-color: rgb(255, 255, 255);">
+        <h5 class="card-title">My Market: </h5>
+        <!-- <p class="card-category">Line Chart with Points</p> -->
+      </div>
+      <div class="card-body" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
+        <div #purikuraChart id="purikuraChart" ></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 
 <br>
+<table class="table table-light text-center">
+  <thead class="thead-dark">
+    <tr>
+      <th>Symbol</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor= "let item of Keys; index as i">
+        <td (mouseover)="getDataList(values_ticker[i])">
+          <!-- <td (mouseover)="getDataList(values_ticker[i])"> -->
+            {{ values_ticker[i] }}
+        </td>
+        <td>{{ values_open[i] }}</td>        
+        <td>{{ values_high[i] }}</td>        
+        <td>{{ values_low[i] }}</td>        
+        <td>{{ values_close[i] }}</td> 
+        <!-- <div class="form-group text-center"> -->
+          <td class="form-group text-center">
+            <button type="button" class="btn mr-1 btn-sm" style="margin-right: 3px; background-color: #f10a1f" (click)="delete(values_ticker[i])">
+              <svg xmlns="http://www.w3.org/2000/svg" 
+                  width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+            </button>
+            
+            <button  type="button" class="btn mr-1 btn-sm" style="background-color: yellow;" (click)="open(content, values_ticker[i])" >
+              <i class="fa fa-dollar"></i>
+            </button>
 
+          </td>     
+        <!-- </div>  -->
+        
+      </tr>
+    </tbody>
+</table>
 <!-- <table class="table table-dark table-sm">
   <thead>
     <tr>
@@ -135,7 +165,7 @@ placeholder="Search Ticket..."
   </div>
 </ng-template>
 
-<hr>
+<!-- <hr> -->
 
 <!-- <pre>{{ closeResult }}</pre> -->
 
@@ -167,9 +197,10 @@ placeholder="Search Ticket..."
                <!-- Utilizamos [(ngModel)] para que automaticamente guarde el valor ahi -->
                <!-- Si quitamos el ngModel, el form no almacena nada en su 'value' -->
                 <input type="text" class="form-control" [(ngModel)]="tempInvest" id="archiveOrigin" name="archiveOrigin" placeholder="Archive Origin"/>
-                <input id="dateOfBirth" class="form-control" [(ngModel)]="dateInvest" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                <br>
+                <input id="dateOfBirth" class="form-control" [(ngModel)]="dateInvest" placeholder="YYYY-MM-DD" name="dp" ngbDatepicker #dp="ngbDatepicker">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                  <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                 </div>
               </div>
           </div>
@@ -189,4 +220,4 @@ placeholder="Search Ticket..."
  
  </div>
 
- 
+ <app-carousel></app-carousel>

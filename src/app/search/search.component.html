@@ -4,13 +4,13 @@
       [(ngModel)]="filterTerm" (keyup.enter)="buscar()" (keyup)="applyFilter()"  #txtBuscar>
       <div class="container-xl">
         <!-- <ul class="list-group"> -->
-        <ul class="list-group position-absolute top-22 start-0 p-2">
-            <tr *ngFor="let ticker of stocksRecords" >
+        <ul class=" list-group-flush position-absolute top-22 start-0 p-2" style="z-index: 999; ">
+            <ul *ngFor="let ticker of stocksRecords" >
              <!-- <a>  {{(user + '').split(",")[1]}}</a> -->
              <a class="list-group-item"
-             style="cursor: pointer"
+             style="cursor: pointer; padding: 1rem 4rem;"
              (click)="save(ticker)" > 
                 {{ ticker }}</a>
-            </tr>
+            </ul>
         </ul>
       </div>

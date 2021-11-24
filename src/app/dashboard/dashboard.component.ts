@@ -311,6 +311,10 @@ getDataList(ticker:string){
     console.log(this.dataMeruko);
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(this.drawChart);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart2);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart0);
   });
 }
 getInvestList(){
@@ -319,6 +323,10 @@ getInvestList(){
   this.service.getInvests(this.ActualEmail, this.investTicker).subscribe(data=>{
     google.charts.load('current', {packages: ['corechart']});
     google.charts.setOnLoadCallback(this.drawChart);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart2);
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(this.drawChart0);
   
   });
   
@@ -328,6 +336,8 @@ getInvestList(){
 }
 
 //Cambiarlo a otro componente
+// @ViewChild('candleChart') candleChart!: ElementRef;
+
 
 @ViewChild('investChart') investChart!: ElementRef;
 drawChart = (list: any)=>{
@@ -335,7 +345,7 @@ drawChart = (list: any)=>{
   // if(isEmptyObject(list)){
   //   this.datosChart = this.gold;
   // }
-  console.log("Mis datos son: ", list);
+  console.log("Mis datos son!!!!!!!!!!!!: ", this.ChartList);
   const data = new google.visualization.DataTable();
   let dates: Array<Date> = [];
   let cocoa = [];
@@ -392,7 +402,7 @@ drawChart = (list: any)=>{
     // backgro    undColor: '#eef2eb',
 
     series: {
-      0: { color: '#1b78d4' }
+      0: { color: '#cc0000' }
     },
     explorer: { 
       //actions: ['dragToZoom', 'rightClickToReset'],
@@ -403,6 +413,218 @@ drawChart = (list: any)=>{
   };
 
   const chart = new google.visualization.AreaChart(this.investChart.nativeElement);
+  chart.draw(data,options);
+
+}
+
+@ViewChild('lineChart') lineChart!: ElementRef;
+drawChart2 = (list: any)=>{
+  list = this.dataMeruko;
+  // if(isEmptyObject(list)){
+  //   this.datosChart = this.gold;
+  // }
+  console.log("Mis datos son: ", list);
+  const data = new google.visualization.DataTable();
+  let dates: Array<Date> = [];
+  let cocoa = [];
+  const name = this.investTicker;
+
+  data.addColumn('datetime', 'Date');
+  // String de nombre
+  data.addColumn('number', 'Close');
+
+  var array: Array<string> = Object.values(this.dataMeruko.Date);
+
+  for (i = 0; i < array.length; i++) {
+    //Convertir los datos del objeto en enteros (es tipo object no string)
+    const intValor = parseInt(array[i]);
+    //console.log("Prueba=", intValor);
+
+    //pasamos las fechas con la funcion date para que los valores en enteros puedan ser Datetime
+    var new_date = new Date(intValor);
+    // console.log(new_date);
+
+    //recoger todas las fechas formateadas a Datetime.
+    dates.push(new_date);
+  }
+  //end for 
+  const index = Object.keys(this.dataMeruko).length;
+  const index2 = dates.length;
+  console.log("INDEX",index);
+  // console.log("Indices :3", index);
+  // console.log("Indices valores", Object.keys(this.datos.Date));
+  cocoa = this.datosChart;
+  // console.log(cocoa);
+  // console.log("Fechas",dates);
+  // console.log("Valores",cocoa);
+  console.log("Necesito ver estos datos, por favor c:",this.dataMeruko.Close);
+  for(var i = 0; i < index2; i++){
+
+      data.addRows([[dates[i],this.dataMeruko.Close[i]]]);
+  }
+
+  const options = {
+    legend: 'series',
+    hAxis: {
+      // title: 'Date'
+
+    },
+    vAxis: {
+      // title: 'Average'
+    },
+    chartArea: {'left':'0','top':'20','width': '100%', 'height': '100%'},
+    // backgro    undColor: '#eef2eb',
+
+    series: {
+      0: { color: '#351c75' }
+    },
+    explorer: { 
+      //actions: ['dragToZoom', 'rightClickToReset'],
+      axis: 'horizontal',
+      maxZoomIn: 10,
+      maxZoomOut: 7
+      }
+  };
+
+  const chart = new google.visualization.AreaChart(this.lineChart.nativeElement);
+  chart.draw(data,options);
+
+}
+
+@ViewChild('candleChart') candleChart!: ElementRef;
+drawChart3 = (list: any)=>{
+  console.log("Mis datos son: ", list);
+  const data = new google.visualization.DataTable();
+  let dates: Array<Date> = [];
+  let cocoa = [];
+  const name = this.investTicker;
+
+
+  data.addColumn('datetime', 'Date');
+  data.addColumn('number', 'High');
+  data.addColumn('number', 'Open');
+  data.addColumn('number', 'Close');
+  data.addColumn('number', 'Low');
+
+  var array: Array<string> = Object.values(this.dataMeruko.Date);
+
+  for (i = 0; i < array.length; i++) {
+    //Convertir los datos del objeto en enteros (es tipo object no string)
+    const intValor = parseInt(array[i]);
+    //console.log("Prueba=", intValor);
+
+    //pasamos las fechas con la funcion date para que los valores en enteros puedan ser Datetime
+    var new_date = new Date(intValor);
+    // console.log(new_date);
+
+    //recoger todas las fechas formateadas a Datetime.
+    dates.push(new_date);
+  }
+  //end for 
+  const index = Object.keys(this.dataMeruko).length;
+  const index2 = this.ChartList["High"].length;
+  console.log("INDEX",index);
+  cocoa = this.datosChart;
+
+  for(var i = 0; i < index2; i++){
+      data.addRows([[this.ChartList['High'],this.values_high[i], this.values_open[i], this.values_close[i], this.values_low[i] ]]);
+  }
+
+  const options = {
+    legend: 'series',
+    selectionMode: 'multiple',
+    tooltip: {trigger: 'selection'},
+    aggregationTarget: 'category',
+    candlestick: {
+        fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+        risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+      },
+      chartArea: {'width': '90%', 'height': '80%'},
+      explorer: { 
+        //actions: ['dragToZoom', 'rightClickToReset'],
+        axis: 'horizontal',
+        maxZoomIn: 10,
+        maxZoomOut: 7
+        }
+  };
+
+  const chart = new google.visualization.CandlestickChart(this.candleChart.nativeElement);
+  chart.draw(data,options);
+
+}
+
+@ViewChild('purikuraChart') purikuraChart!: ElementRef;
+drawChart0 = (list: any)=>{
+  list = this.dataMeruko;
+  // if(isEmptyObject(list)){
+  //   this.datosChart = this.gold;
+  // }
+  console.log("Mis datos son: ", list);
+  const data = new google.visualization.DataTable();
+  let dates: Array<Date> = [];
+  let cocoa = [];
+  const name = this.investTicker;
+
+  data.addColumn('datetime', 'Date');
+  // String de nombre
+  data.addColumn('number', 'Close');
+  data.addColumn('number', 'Final');
+
+  var array: Array<string> = Object.values(this.dataMeruko.Date);
+
+  for (i = 0; i < array.length; i++) {
+    //Convertir los datos del objeto en enteros (es tipo object no string)
+    const intValor = parseInt(array[i]);
+    //console.log("Prueba=", intValor);
+
+    //pasamos las fechas con la funcion date para que los valores en enteros puedan ser Datetime
+    var new_date = new Date(intValor);
+    // console.log(new_date);
+
+    //recoger todas las fechas formateadas a Datetime.
+    dates.push(new_date);
+  }
+  //end for 
+  const index = Object.keys(this.dataMeruko).length;
+  const index2 = dates.length;
+  console.log("INDEX",index);
+  // console.log("Indices :3", index);
+  // console.log("Indices valores", Object.keys(this.datos.Date));
+  cocoa = this.datosChart;
+  // console.log(cocoa);
+  // console.log("Fechas",dates);
+  // console.log("Valores",cocoa);
+  console.log("Necesito ver estos datos, por favor c:",this.dataMeruko.Close);
+  for(var i = 0; i < index2; i++){
+
+      data.addRows([[dates[i],this.dataMeruko.Close[i],this.dataMeruko.final[i]]]);
+      // data.addRows([[dates[i],this.dataMeruko.final[i]]]);
+  }
+
+  const options = {
+    legend: 'series',
+    hAxis: {
+      // title: 'Date'
+
+    },
+    vAxis: {
+      // title: 'Average'
+    },
+    chartArea: {'left':'0','top':'20','width': '100%', 'height': '100%'},
+    // backgro    undColor: '#eef2eb',
+
+    series: {
+      0: { color: '#351c75' }
+    },
+    explorer: { 
+      //actions: ['dragToZoom', 'rightClickToReset'],
+      axis: 'horizontal',
+      maxZoomIn: 10,
+      maxZoomOut: 7
+      }
+  };
+
+  const chart = new google.visualization.AreaChart(this.purikuraChart.nativeElement);
   chart.draw(data,options);
 
 }

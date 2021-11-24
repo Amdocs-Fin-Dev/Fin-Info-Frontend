@@ -1,5 +1,5 @@
 <h2>Tecnichal Indicators</h2>
-<table class="first left table  table-hover">
+<table class="first left table  table-hover" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
     <thead>
     <tr>
         <th>Name</th>
@@ -13,7 +13,7 @@
             title="RSI tracks overbought and oversold levels by measuring the velocity of price movements."
             > RSI </td>
             <td> {{ dataAnalisis.rsi | number }}  </td>
-            <td> {{ rsiState }} </td>
+            <td #rsi id="rsi" style="font-weight: 500;"> {{ rsiState }} </td>
         </tr>
         <tr>
             <td data-bs-toggle="tooltip" data-bs-placement="top" 
@@ -21,7 +21,7 @@
             > ADX </td>
             <td> {{ dataAnalisis.adx  | number}} </td>
             <td class="left textNum bold"> 
-                <span class="bold"> {{ adxState }} </span>
+                <span #adx id="adx" class="bold" style="font-weight: 500;"> {{ adxState }} </span>
             </td>
         </tr>
         <tr>
@@ -29,14 +29,14 @@
             title= "Momentum indicator comparing a particular closing price of a security to a range of its price over a certain period of time."
             >Stochastic Oscillator</td>
             <td> {{ dataAnalisis.stOscillator | number}}</td>
-            <td> {{ stoOsState }} </td>
+            <td #sto id="sto" style="font-weight: 500;"> {{ stoOsState }} </td>
         </tr>
         <tr>
             <td data-bs-toggle="tooltip" data-bs-placement="top" 
             title="The Average True Range [ATR] is a market volatility indicator.The ATR is then a moving average, generally using 14 days, of the true ranges"
             >Avg True Range</td>
             <td>{{ dataAnalisis.AvgTrueRange | number}}</td>
-            <td>{{ avgTrueState }}</td>
+            <td #avg id="avg" style="font-weight: 500;">{{ avgTrueState }}</td>
         </tr>
     </tbody>
 </table>

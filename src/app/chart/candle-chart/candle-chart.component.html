@@ -1,10 +1,10 @@
 
-<div id="card" #card class="card" style="margin-block: 30px;width: 45rem;">
+<div id="card" #card class="card" style="margin-block: 30px;width: 45rem; box-shadow: 5px 10px 18px #888888; border-radius: 5px;">
 
-    <div id="cardBody" #cardBody class="card-body">
-            <h2 class="card-title">{{title |titlecase}} Overview </h2>
-            <h6 class="card-subtitle mb-2">Volume {{ lastVolume | number}}</h6>
-            <h6 id="diff" #diff class="card-subtitle mb-2">Close: {{ lastClose | number}} |  {{ differenceClose | number}} </h6>
+    <div id="cardBody" #cardBody class="card-body" style="font-weight: 600 !important;">
+            <h2 #titulo id="titulo" class="card-title">{{title |titlecase}} Overview </h2>
+            <h6  #titulo id="titulo"class="card-subtitle mb-2">Volume {{ lastVolume | number}}</h6>
+            <h6  #titulo id="titulo" id="diff" #diff class="card-subtitle mb-2">Close: {{ lastClose | number}} |  {{ differenceClose | number}} </h6>
     </div>
     
 </div>
@@ -22,11 +22,11 @@
 
 
 <button routerLink="/line" 
-            class="m-1 btn btn-outline-warning">
+            class="s-1 btn btn-outline-warning">
             <img [src]="'assets/images/graph.png'" alt="line" height="22" ></button>
 
 <button routerLink="/candle" 
-        class="m-1 btn btn-outline-warning">
+        class="s-1 btn btn-outline-warning">
         <img [src]="'assets/images/candlestick.svg'" alt="candle" height="22" ></button>
 
 <button class="m-1 btn btn-outline-danger" (click)="refreshChartList('2m')">2m</button>
@@ -47,7 +47,7 @@
         <!-- </div> -->
     <!-- </div> -->
     <div class="row">
-        <div #candleChart class="col-md-8"></div>
+        <div #candleChart class="col-md-8" style="box-shadow: 5px 10px 18px #888888; border-radius: 5px;"></div>
         <!-- <div class="col-sm-6">
             <app-analysis></app-analysis>
         </div> -->
